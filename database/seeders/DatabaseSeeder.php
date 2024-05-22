@@ -21,5 +21,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(UsersRolesSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(CriteriaSeeder::class);
+        $this->call(AlternativeSeeder::class);
+        $this->call(RatioIndexSeeder::class);
     }
 }

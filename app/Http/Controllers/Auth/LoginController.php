@@ -45,19 +45,4 @@ class LoginController extends Controller
         Session::flush(); // Menghapus semua data sesi pengguna
         return redirect()->route('login'); // Redirect ke halaman login
     }
-
-    public function loginAjax(Request $request){
-        $credentials = $request->only('username', 'password');
-
-        dd($credentials);
-        die;
-
-        // if (Auth::attempt($credentials)) {
-        //     // Login berhasil, kirim respons JSON
-        //     return response()->json(['success' => true, 'redirect' => route('dashboard')]);
-        // } else {
-        //     // Login gagal, kirim respons JSON dengan pesan error
-        //     return response()->json(['success' => false, 'error' => 'Username atau password salah.'], 401);
-        // }
-    }
 }

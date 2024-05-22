@@ -48,9 +48,6 @@
                                             <td>{{$alternatifItem->nama_alternatif}}</td>
                                             <td name="bstable-actions">
                                                 <div class="btn-list">
-                                                    <button id="bDetail" type="button" class="btn btn-sm btn-warning">
-                                                        <span class="fe fe-info"> </span>
-                                                    </button>
                                                     <button id="bEdit" type="button" class="btn btn-sm btn-primary">
                                                         <span class="fe fe-edit"> </span>
                                                     </button>
@@ -77,4 +74,11 @@
 
     </div>
 </div>
+@endsection
+@section('js')
+    <script>
+        $(document).ready(function() {
+            $('#responsive-datatable').DataTable();
+        });
+    </script>
 @endsection

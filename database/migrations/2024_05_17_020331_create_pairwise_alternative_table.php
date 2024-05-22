@@ -17,6 +17,11 @@ return new class extends Migration
             $table->unsignedBigInteger('alternative_id');
             $table->decimal('value'); // Presisi 18 digit total dan 15 digit setelah koma
             $table->timestamps();
+
+            $table->foreign('criteria_id')->references('id')->on('kriteria')->onDelete('cascade');
+            $table->foreign('alternative_id')->references('id')->on('alternatif')->onDelete('cascade');
+
+            $table->unique(['criteria_id', 'alternative_id']);
         });
     }
 

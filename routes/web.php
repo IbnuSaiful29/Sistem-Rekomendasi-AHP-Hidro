@@ -60,6 +60,7 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('/criteria', [CriteriaController::class, 'index'])->name('criteria')->middleware('auth')->middleware('multirole:superadmin,SEO,pakar');
     Route::get('/criteria/add', [CriteriaController::class, 'create'])->name('criteria-create')->middleware('auth')->middleware('multirole:superadmin,SEO,pakar');
     Route::post('/criteria/add-save', [CriteriaController::class, 'store'])->name('criteria-store')->middleware('auth')->middleware('multirole:superadmin,SEO,pakar');
+    Route::post('/criteria/delete/{id}', [CriteriaController::class, 'destroy'])->name('criteria-delete')->middleware('auth')->middleware('multirole:superadmin,SEO,pakar');
 
     //Alternatif
     Route::get('/alternative', [AlternativeController::class, 'index'])->name('alternative')->middleware('auth')->middleware('multirole:superadmin,SEO,pakar');
@@ -70,10 +71,14 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('/perbandingan/criteria', [CriteriaController::class, 'pairwiseComparison'])->name('pairwiseComparisonCriteria')->middleware('auth')->middleware('multirole:superadmin,SEO,pakar');
     Route::get('/perbandingan/criteria/edit', [CriteriaController::class, 'editPairwiseComparison'])->name('pairwiseComparisonCriteriaEdit')->middleware('auth')->middleware('multirole:superadmin,SEO,pakar');
     Route::post('/perbandingan/criteria/edit-save', [CriteriaController::class, 'editSavePairwiseComparison'])->name('pairwiseComparisonCriteriaEditSave')->middleware('auth')->middleware('multirole:superadmin,SEO,pakar');
+    Route::get('/perbandingan/criteria/rangking', [CriteriaController::class, 'rangkingCriteria'])->name('rangkingCriteria')->middleware('auth')->middleware('multirole:superadmin,SEO,pakar');
 
 
     //perbandingan berpasangan alternative
     Route::get('/perbandingan/alternative', [AlternativeController::class, 'pairwiseComparison'])->name('pairwiseComparisonAlternative')->middleware('auth')->middleware('multirole:superadmin,SEO,pakar');
-    Route::get('/perbandingan/alternative/edit', [AlternativeController::class, 'editPairwiseComparison'])->name('pairwiseComparisonAlternativeEdit')->middleware('auth')->middleware('multirole:superadmin,SEO,pakar');
-    Route::post('/perbandingan/alternative/edit-save', [AlternativeController::class, 'editSavePairwiseComparison'])->name('pairwiseComparisonAlternativeEditSave')->middleware('auth')->middleware('multirole:superadmin,SEO,pakar');
+    Route::get('/perbandingan/alternative/edit/{id}', [AlternativeController::class, 'editPairwiseComparison'])->name('pairwiseComparisonAlternativeEdit')->middleware('auth')->middleware('multirole:superadmin,SEO,pakar');
+    // Route::post('/perbandingan/alternative/edit-save', [AlternativeController::class, 'editSavePairwiseComparison'])->name('pairwiseComparisonAlternativeEditSave')->middleware('auth')->middleware('multirole:superadmin,SEO,pakar');
+    Route::post('/perbandingan/alternative/edit-save/{id}', [AlternativeController::class, 'editSavePairwiseComparison'])->name('pairwiseComparisonAlternativeEditSave')->middleware('auth')->middleware('multirole:superadmin,SEO,pakar');
+
+    // Route::post('/perbandingan/alternative/rangking/{kriteria}', [AlternativeController::class, 'editSavePairwiseComparison'])->name('pairwiseComparisonAlternativeEditSave')->middleware('auth')->middleware('multirole:superadmin,SEO,pakar');
 });

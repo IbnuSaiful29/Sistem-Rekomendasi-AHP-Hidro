@@ -134,5 +134,10 @@ class CriteriaController extends Controller
 
     }
 
+    public function rangkingCriteria(){
+        $data['tittle'] = 'Rangking Kriteria';
+        return view('admin.perbandingan-kriteria.rangking-kriteria', $data);
+    }
+
 
 }

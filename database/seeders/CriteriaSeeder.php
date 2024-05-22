@@ -4,6 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class CriteriaSeeder extends Seeder
 {
@@ -12,40 +15,19 @@ class CriteriaSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('users')->insert([
-            'name' => 'John Doe',
-            'username' => 'johndoe',
-            'email' => 'johndoe@example.com',
-            'email_verified_at' => now(),
-            'password' => Hash::make('admin1234'),
-            'role' => 'superadmin',
-            'remember_token' => Str::random(10),
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+        $criteria = [
+            ['nama_kriteria' => 'Suhu', 'type' => 'Benefit'],
+            ['nama_kriteria' => 'Hidrologi' , 'type' => 'Cost'],
+            ['nama_kriteria' => 'Infrastruktur' , 'type' => 'Cost'],
+            ['nama_kriteria' => 'Kelembapan', 'type' => 'Benefit'],
+        ];
 
-        DB::table('users')->insert([
-            'name' => 'Jane Doe',
-            'username' => 'janedoe',
-            'email' => 'janedoe@example.com',
-            'email_verified_at' => now(),
-            'password' => Hash::make('admin1234'),
-            'role' => 'SEO',
-            'remember_token' => Str::random(10),
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        DB::table('users')->insert([
-            'name' => 'Jin Doe',
-            'username' => 'jindoe',
-            'email' => 'jindoe@example.com',
-            'email_verified_at' => now(),
-            'password' => Hash::make('admin1234'),
-            'role' => 'pakar',
-            'remember_token' => Str::random(10),
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+        // Insert data ke tabel criteria
+        foreach ($criteria as $index) {
+            DB::table('kriteria')->insert([
+                'nama_kriteria' => $index['nama_kriteria'],
+                'type' => $index['type'],
+            ]);
+        }
     }
 }

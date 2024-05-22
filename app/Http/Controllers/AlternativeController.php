@@ -84,7 +84,16 @@ class AlternativeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $criteria = Criteria::findOrFail($id);
+
+        // Cek apakah kriteria terkait dengan data lain
+        if ($criteria->pairwiseComparisons()->count() > 0) {
+            return redirect()->route('criteria.index')->with('error', 'Cannot delete criteria with related data.');
+        }
+
+        $criteria->delete();
+
+        return redirect()->route('criteria.index')->with('success', 'Criteria deleted successfully.');
     }
 
     public function pairwiseComparison()
@@ -99,35 +108,71 @@ class AlternativeController extends Controller
         return view('admin.perbandingan-alternative.perbandingan-alternative', $data);
     }
 
-    public function EditPairwiseComparison()
+    public function EditPairwiseComparison($id)
     {
+        $data_alternative = Alternatif::find($id);
         $data_criteria = Criteria::all();
-        $data_pairwise = PairwiseAlternative::all();
-        $data_alternative = Alternatif::all();
+        $data_pairwise = PairwiseAlternative::where('alternative_id', $id)->get();
         $data['alternative'] = $data_alternative;
         $data['criteria'] = $data_criteria;
         $data['pairwise'] = $data_pairwise;
-        // $data['criteria'] = ['suhu', 'hidrologi', 'infrastruktur'];
         $data['tittle'] = 'Perbandingan Alternative';
         return view('admin.perbandingan-alternative.edit-perbandingan-alternatif', $data);
     }
+    // public function EditPairwiseComparison($id)
+    // {
+    //     $data_criteria = Criteria::all();
+    //     $data_pairwise = PairwiseAlternative::all();
+    //     $data_alternative = Alternatif::all();
+    //     $data['alternative'] = $data_alternative;
+    //     $data['criteria'] = $data_criteria;
+    //     $data['pairwise'] = $data_pairwise;
+    //     // $data['criteria'] = ['suhu', 'hidrologi', 'infrastruktur'];
+    //     $data['tittle'] = 'Perbandingan Alternative';
+    //     return view('admin.perbandingan-alternative.edit-perbandingan-alternatif', $data);
+    // }
 
-    public function editSavePairwiseComparison(Request $request){
-        $matrix = $request->input('matrix');
-        foreach ($matrix as $rowCriterionId => $colCriteria) {
-            foreach ($colCriteria as $colCriterionId => $value) {
-                PairwiseAlternative::updateOrCreate(
-                    [
-                        'alternative_id' => $rowCriterionId,
-                        'criteria_id' => $colCriterionId,
-                    ],
-                    [
-                        'value' => $value,
-                    ]
-                );
+    // public function editSavePairwiseComparison(Request $request, $id){
+
+    //     $matrix = $request->input('matrix');
+    //     foreach ($matrix as $rowCriterionId => $colCriteria) {
+    //         foreach ($colCriteria as $colCriterionId => $value) {
+    //             PairwiseAlternative::updateOrCreate(
+    //                 [
+    //                     'alternative_id' => $rowCriterionId,
+    //                     'criteria_id' => $colCriterionId,
+    //                 ],
+    //                 [
+    //                     'value' => $value,
+    //                 ]
+    //             );
+    //         }
+    //     }
+
+    //     return response()->json(['message' => 'Data berhasil disimpan'], 200);
+    // }
+
+    public function editSavePairwiseComparison(Request $request, $id)
+    {
+        $criteria = Criteria::all();
+
+        foreach ($criteria as $criterion) {
+            $value = $request->input('value_' . $criterion->id);
+            $pairwise = PairwiseAlternative::where('alternative_id', $id)->where('criteria_id', $criterion->id)->first();
+
+            if ($pairwise) {
+                $pairwise->value = $value;
+                $pairwise->save();
+            } else {
+                PairwiseAlternative::create([
+                    'alternative_id' => $id,
+                    'criteria_id' => $criterion->id,
+                    'value' => $value
+                ]);
             }
         }
 
-        return response()->json(['message' => 'Data berhasil disimpan'], 200);
+        return response()->json(['message' => 'Data berhasil disimpan']);
     }
+
 }

@@ -73,7 +73,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('pairwiseComparisonCriteria') }}" class="slide-item {{ $tittle === 'Rangking Kriteria' ? 'active' : '' }}">
+                            <a href="{{ route('rangkingCriteria') }}" class="slide-item {{ $tittle === 'Rangking Kriteria' ? 'active' : '' }}">
                                 Rangking Kriteria
                             </a>
                         </li>

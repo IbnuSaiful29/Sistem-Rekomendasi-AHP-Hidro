@@ -9,11 +9,11 @@
 
             <!-- PAGE-HEADER -->
             <div class="page-header">
-                <h1 class="page-title">Criteria</h1>
+                <h1 class="page-title">Rangking Criteria</h1>
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}"><i class="fe fe-home"></i></a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Criteria</li>
+                        <li class="breadcrumb-item active" aria-current="page">Rangking Criteria</li>
                     </ol>
                 </div>
 
@@ -27,9 +27,9 @@
                             <div class="col-md-10">
                                 <h3 class="card-title">Criteria</h3>
                             </div>
-                            <div class="col-md-2" style="display:flex;  justify-content: right;">
+                            {{-- <div class="col-md-2" style="display:flex;  justify-content: right;">
                                 <a href="{{route('criteria-create')}}" class="btn btn-sm btn-primary">Add Criteria <i class="fe fe-plus"></i></a>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -38,31 +38,10 @@
                                         <tr>
                                             <th class="wd-15p border-bottom-0">No</th>
                                             <th class="wd-25p border-bottom-0">Criteria Name</th>
-                                            <th class="wd-25p border-bottom-0">Type</th>
-                                            <th class="wd-25p border-bottom-0">Action</th>
+                                            <th class="wd-25p border-bottom-0">Nilai</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($criteria as $criteriaItem)
-                                        <tr  id="criterion-{{ $criteriaItem->id }}">
-                                            <td>{{$loop->iteration}}</td>
-                                            <td>{{$criteriaItem->nama_kriteria}}</td>
-                                            <td>{{$criteriaItem->type}}</td>
-                                            <td name="bstable-actions">
-                                                <div class="btn-list">
-                                                    {{-- <button id="bEdit" type="button" class="btn btn-sm btn-primary">
-                                                        <span class="fe fe-edit"> </span>
-                                                    </button> --}}
-                                                    <a href="" id="bDel" class="btn  btn-sm btn-warning">
-                                                        <span class="fe fe-edit"></span>
-                                                    </a>
-                                                    <button class="btn btn-danger btn-sm delete-button" data-id="{{ $criteriaItem->id }}">
-                                                        <span class="fe fe-trash-2"></span>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        @endforeach
 
 
                                     </tbody>
@@ -81,7 +60,7 @@
 </div>
 @endsection
 @section('js')
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             $('.delete-button').click(function() {
                 var criterionId = $(this).data('id');
@@ -89,7 +68,7 @@
 
                 if (confirm('Are you sure you want to delete this criteria?')) {
                     $.ajax({
-                        url: '/criteria/' + criterionId,
+                        url: '{{route('criteria-delete')}}' + criterionId,
                         type: 'DELETE',
                         data: {
                             _token: '{{ csrf_token() }}'
@@ -109,5 +88,5 @@
                 }
             });
         });
-    </script>
+    </script> --}}
 @endsection

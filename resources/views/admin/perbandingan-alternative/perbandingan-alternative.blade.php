@@ -28,67 +28,52 @@
                                 <h3 class="card-title">Perbandingan Alternatif</h3>
                             </div>
                             <div class="col-md-6" style="display:flex;  justify-content: right;">
-                                <a href="{{route('pairwiseComparisonAlternativeEdit')}}" class="btn btn-sm btn-primary">Edit Perbandingan Alternatif <i class="fe fe-edit"></i></a>
+                                {{-- <a href="{{route('pairwiseComparisonAlternativeEdit')}}" class="btn btn-sm btn-primary">Edit Perbandingan Alternatif <i class="fe fe-edit"></i></a> --}}
                             </div>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <tr>
-                                        <td></td>
-                                        @foreach ($criteria as $criterion)
-                                            <td>{{ $criterion->nama_kriteria }}</td>
-                                        @endforeach
-                                    </tr>
-                                    @foreach ($alternative as $rowAlternative)
+                                <table class="table table-bordered text-nowrap border-bottom" id="responsive-datatable">
+                                    <thead>
                                         <tr>
-                                            <td>{{ $rowAlternative->nama_alternatif }}</td>
-                                            @foreach ($criteria as $colCriterion)
-                                                <td>
-                                                    @php
-                                                        $data = $pairwise->where('alternative_id', $rowAlternative->id)
-                                                                    ->where('criteria_id', $colCriterion->id)
-                                                                    ->first();
-                                                        $namaKriteria = $colCriterion->nama_kriteria;
-                                                        $namaKriteriaLower = strtolower($namaKriteria);
-                                                    @endphp
-                                                    @if ($data)
-                                                        @if ($namaKriteriaLower == 'suhu')
-                                                            {{ $data->value }} &deg;C
+                                            <th>Alternatif</th>
+                                            @foreach ($criteria as $criterion)
+                                                <th>{{ $criterion->nama_kriteria }}</t>
+                                            @endforeach
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($alternative as $rowAlternative)
+                                            <tr>
+                                                <td>{{ $rowAlternative->nama_alternatif }}</td>
+                                                @foreach ($criteria as $colCriterion)
+                                                    <td>
+                                                        @php
+                                                            $data = $pairwise->where('alternative_id', $rowAlternative->id)
+                                                                        ->where('criteria_id', $colCriterion->id)
+                                                                        ->first();
+                                                            $namaKriteria = $colCriterion->nama_kriteria;
+                                                            $namaKriteriaLower = strtolower($namaKriteria);
+                                                        @endphp
+                                                        @if ($data)
+                                                            @if ($namaKriteriaLower == 'suhu')
+                                                                {{ $data->value }} &deg;C
+                                                            @else
+                                                                {{ $data->value }}
+                                                            @endif
                                                         @else
-                                                            {{ $data->value }}
+                                                            0
                                                         @endif
-                                                    @else
-                                                        0
-                                                    @endif
+                                                    </td>
+                                                @endforeach
+                                                <td>
+                                                    <a href="{{route('pairwiseComparisonAlternativeEdit', [$rowAlternative->id])}}" id="bEdit" class="btn btn-sm btn-primary"> <span class="fe fe-edit"> </span></a>
                                                 </td>
-                                            @endforeach
-                                        </tr>
-                                    @endforeach
-                                </table>
-                                {{-- <table class="table table-bordered">
-                                    <tr>
-                                        <td></td>
-                                        @foreach ($criteria as $criterion)
-                                            <td>{{ $criterion->nama_kriteria }}</td>
+                                            </tr>
                                         @endforeach
-                                    </tr>
-                                    @foreach ($criteria as $rowCriterion)
-                                        <tr>
-                                            <td>{{ $rowCriterion->nama_kriteria }}</td>
-                                            @foreach ($criteria as $colCriterion)
-                                                @if ($rowCriterion->id == $colCriterion->id)
-                                                    <td><input type="number" class="form-control" id="matrix_{{ $rowCriterion->id }}_{{ $colCriterion->id }}" name="matrix[{{ $rowCriterion->id }}][{{ $colCriterion->id }}]" value="1" readonly></td>
-                                                @elseif ($rowCriterion->id > $colCriterion->id)
-                                                    <td><input type="number" class="form-control" id="matrix_{{ $rowCriterion->id }}_{{ $colCriterion->id }}" name="matrix[{{ $rowCriterion->id }}][{{ $colCriterion->id }}]" oninput="updateMatrix({{ $rowCriterion->id }}, {{ $colCriterion->id }})" min="0" max="0" value="0"></td>
-                                                @else
-                                                    <td><input type="number" class="form-control" id="matrix_{{ $rowCriterion->id }}_{{ $colCriterion->id }}" name="matrix[{{ $rowCriterion->id }}][{{ $colCriterion->id }}]" oninput="updateMatrix({{ $rowCriterion->id }}, {{ $colCriterion->id }})" min="1" max="9" value="0"></td>
-                                                @endif
-                                            @endforeach
-                                        </tr>
-                                    @endforeach
-                                </table> --}}
-
+                                    </tbody>
+                                </table>
 
                             </div>
                         </div>
@@ -102,14 +87,6 @@
 
     </div>
 </div>
-
-<script>
-    function updateMatrix(row, col) {
-        var pembilang = $('#matrix_' + row + '_' + row).val();
-        var value = $('#matrix_' + row + '_' + col).val();
-        $('#matrix_' + col + '_' + row).val(pembilang/value);
-    }
-</script>
 
 @endsection
 

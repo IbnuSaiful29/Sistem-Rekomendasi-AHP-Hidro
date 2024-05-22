@@ -125,7 +125,7 @@
 
         // Check if the reciprocal value exists in the options, if not add it dynamically
         if (!oppositeSelect.find('option[value="' + reciprocalValue + '"]').length) {
-            oppositeSelect.append('<option value="' + reciprocalValue + '">' + reciprocalValue + '</option>');
+            oppositeSelect.append('<option value="' + reciprocalValue + '" hidden>' + reciprocalValue + '</option>');
         }
 
         oppositeSelect.val(reciprocalValue.toString());

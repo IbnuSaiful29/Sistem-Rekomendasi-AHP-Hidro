@@ -9,7 +9,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title>Demo Restaurant | Porto - Multipurpose Website Template</title>
+		<title>{{$tittle}}</title>
 
 		<meta name="keywords" content="WebSite Template" />
 		<meta name="description" content="Porto - Multipurpose Website Template">
@@ -148,6 +148,12 @@
 			}
 
 		</script>
+        <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="ae29a6f8-c2d0-4e2e-831d-1accd92599d4";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+        @yield('js');
+        <script>
+            var dt = new Date();
+            document.getElementById("tanggalwaktu").innerHTML = dt.toLocaleString();
+        </script>
 
 	</body>
 </html>

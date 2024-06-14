@@ -11,4 +11,9 @@ class Alternatif extends Model
 
     protected $table = 'alternatif';
     protected $guarded = [''];
+
+    public function pairwiseAlternatives()
+    {
+        return $this->hasMany(PairwiseAlternative::class, 'alternative_id');
+    }
 }

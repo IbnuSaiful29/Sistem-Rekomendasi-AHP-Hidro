@@ -28,9 +28,9 @@
             </div>
             <div class="col-lg-6 text-center mb-4 mb-lg-0">
                 <!-- Google Maps - Go to the bottom of the page to change settings and map location. -->
-                <div id="googlemaps" class="google-map mt-0 mb-3" style="height: 190px;"></div>
+                {{-- <div id="googlemaps" class="google-map mt-0 mb-3" style="height: 190px;"></div>
 
-                <a href="demo-restaurant-contact.html#get-direction" data-hash data-hash-offset="0" data-hash-offset-lg="110" class="text-decoration-none text-color-primary font-weight-bold text-3-5">Get Directions</a>
+                <a href="demo-restaurant-contact.html#get-direction" data-hash data-hash-offset="0" data-hash-offset-lg="110" class="text-decoration-none text-color-primary font-weight-bold text-3-5">Get Directions</a> --}}
             </div>
             <div class="col-lg-3">
                 <h4 class="text-color-light font-weight-bold text-center text-lg-end mb-3">Useful Links</h4>

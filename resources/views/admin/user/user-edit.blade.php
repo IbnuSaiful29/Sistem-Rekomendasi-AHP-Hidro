@@ -26,13 +26,14 @@
                             <h4 class="card-title">Edit User Form</h4>
                         </div>
                         <div class="card-body">
-                            <form class="form-horizontal" action="{{route('user-store')}}" method="POST">
+                            <form class="form-horizontal" action="{{route('user-update')}}" method="POST">
                                 @csrf
                                 @foreach ($data_user as $itemUser)
 
                                 <div class=" row mb-4">
                                     <label for="inputName" class="col-md-3 form-label">Name</label>
                                     <div class="col-md-9">
+                                        <input type="text" class="form-control" id="inputId" name="id_user" value="{{$itemUser->id}}" hidden>
                                         <input type="text" class="form-control" id="inputName" name="name" value="{{$itemUser->name}}">
                                     </div>
                                 </div>
@@ -49,9 +50,9 @@
                                     </div>
                                 </div>
                                 <div class=" row mb-4">
-                                    <label for="inputPassword3" class="col-md-3 form-label">Password</label>
+                                    <label for="inputPassword3" class="col-md-3 form-label">New Password</label>
                                     <div class="col-md-9">
-                                        <input type="password" class="form-control" id="inputPassword3" name="password" value="{{$itemUser->password}}">
+                                        <input type="password" class="form-control" id="inputPassword3" name="password">
                                     </div>
                                 </div>
                                 <div class=" row mb-4">
@@ -59,9 +60,9 @@
                                     <div class="col-md-9">
                                         <div class="form-group">
                                             <select class="form-control select2-show-search form-select" id="roles" name="roles" data-placeholder="Choose one">
-                                                <option label="Choose one"></option>
+                                                <option label="{{$itemUser->email}}"></option>
                                                 @foreach ($roles as $item)
-                                                    <option value="{{$item->role_name}}">{{$item->role_name}}</option>
+                                                    <option value="{{$item->role_name}}" {{ $item->role_name == $itemUser->role ? 'selected' : '' }}>{{$item->role_name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

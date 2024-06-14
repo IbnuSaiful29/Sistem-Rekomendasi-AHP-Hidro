@@ -98,16 +98,17 @@
                     <ul class="slide-menu">
                         <li><a href="{{route('pairwiseComparisonAlternative')}}" class="slide-item {{ $tittle === 'Perbandingan Alternatif' ? 'active' : '' }}">Kriteria Alternatif</a></li>
                         <li class="sub-slide">
-                            <a class="sub-side-menu__item" href="javascript:void(0)" data-bs-toggle="sub-slide"><span class="sub-side-menu__label">Rangking Kriteria</span><i class="sub-angle fe fe-chevron-right"></i></a>
+                            <a class="sub-side-menu__item" href="javascript:void(0)" data-bs-toggle="sub-slide"><span class="sub-side-menu__label">Rangking ALternatif - Kriteria</span><i class="sub-angle fe fe-chevron-right"></i></a>
                             <ul class="sub-slide-menu">
                                 @php
-                                    $menusKriteria = DB::select('SELECT nama_kriteria FROM kriteria');
+                                    $menusKriteria = DB::select('SELECT * FROM kriteria');
                                 @endphp
                                 @foreach ($menusKriteria as $menuKriteria)
-                                    <li><a href="javascript:void(0)" class="sub-slide-item">{{ $menuKriteria->nama_kriteria }}</a></li>
+                                    <li><a href="{{route('rangkingCriteriaAlternative', [$menuKriteria->id])}}" class="sub-slide-item {{ ($tittle === 'Rangking Alternatif - ' . $menuKriteria->nama_kriteria) ? 'active' : '' }}">{{ $menuKriteria->nama_kriteria }}</a></li>
                                 @endforeach
                             </ul>
                         </li>
+                        <li><a href="{{route('rangkingCriteriaAlternativeAll')}}" class="slide-item {{ $tittle === 'Rangking Alternatif' ? 'active' : '' }}">Rangking Alternatif</a></li>
                     </ul>
                 </li>
 

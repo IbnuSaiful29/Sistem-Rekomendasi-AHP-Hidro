@@ -31,8 +31,8 @@
                                 <a href="{{route('criteria-create')}}" class="btn btn-sm btn-primary">Add Criteria <i class="fe fe-plus"></i></a>
                             </div> --}}
                         </div>
-                        <div class="card-body">
-                            <table class="table table-bordered">
+                        {{-- <div class="card-body"> --}}
+                            {{-- <table class="table table-bordered">
                                 <tr>
                                     <th>Lambda Max</th>
                                     <td>{{ $lambdaMax }}</td>
@@ -46,7 +46,7 @@
                                     <td>
                                         {{ $consistencyRatio }}
                                     </td>
-                                    <td>
+                                    {{-- <td>
                                         @if ($consistencyRatio >= 0.1)
                                             <div class="row">
                                                 <div class="col-md-2">
@@ -59,30 +59,84 @@
                                         @else
                                             <span class="btn btn-sm btn-info">Konsisten</span>
                                         @endif
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
+                                    </td> --}}
+                                {{-- </tr>
+                            </table> --}}
+                        {{-- </div> --}}
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered text-nowrap border-bottom" id="responsive-datatable">
+                                {{-- <table class="table table-bordered text-nowrap border-bottom">
                                     <thead>
                                         <tr>
-                                            <th>Ranking</th>
-                                            <th>Nama Kriteria</th>
-                                            <th>Weight</th>
+                                            <th>Alternatif</th>
+                                            @foreach ($alternatives as $alternative)
+                                                <th>{{ $alternative->alternative->nama_alternatif }}</th>
+                                            @endforeach
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($rankedCriteria as $rank => $criterion)
+                                        @foreach ($comparisonMatrix as $rowIndex => $row)
                                             <tr>
-                                                <td>{{ $rank + 1 }}</td>
-                                                <td>{{ $criterion['name'] }}</td>
-                                                <td>{{ $criterion['weight'] }}</td>
+                                                <td>{{ $alternatives[$rowIndex]->alternative->nama_alternatif }}</td>
+                                                @foreach ($row as $value)
+                                                    <td>{{ round($value, 3) }}</td>
+                                                @endforeach
                                             </tr>
                                         @endforeach
                                     </tbody>
+                                </table> --}}
+                                {{-- <table class="table table-bordered text-nowrap border-bottom">
+                                    <thead>
+                                        <tr>
+                                            <th>Alternatif</th>
+                                            @foreach ($alternatives as $alternative)
+                                                <th>{{ $alternative->alternative->nama_alternatif }}</th>
+                                            @endforeach
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($comparisonMatrix as $alternativeId => $row)
+                                            <tr>
+                                                <td>
+                                                    @php
+                                                          $nama_alternatif = DB::select('SELECT nama_alternatif FROM alternatif WHERE id = ?', [$alternativeId]);
+                                                    @endphp
+
+
+                                                    {{$nama_alternatif[0]->nama_alternatif}}
+
+
+                                                </td>
+
+                                                @foreach ($row as $value)
+                                                    <td>{{ round($value, 3) }}</td>
+                                                @endforeach
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table> --}}
+                                <h4 class="mt-4">Bobot (Priority Vector)</h4>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Alternatif</th>
+                                            <th>Bobot</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($dataWeights as $data)
+                                        <tr>
+                                            <td>{{ $data['nama_alternatif'] }}</td>
+                                            <td>{{ isset($data['bobot']) ? round($data['bobot'], 3) : 'N/A' }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
                                 </table>
+
+                                {{-- <h4 class="mt-4">Konsistensi</h4>
+                                <p>Lambda Max: {{ round($lambdaMax, 3) }}</p>
+                                <p>Consistency Index (CI): {{ round($consistencyIndex, 3) }}</p>
+                                <p>Consistency Ratio (CR): {{ round($consistencyRatio, 3) }}</p> --}}
                             </div>
                         </div>
                     </div>

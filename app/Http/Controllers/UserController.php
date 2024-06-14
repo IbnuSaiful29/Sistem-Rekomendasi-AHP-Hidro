@@ -84,9 +84,31 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        // Validate the incoming request data
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'password' => 'nullable|string|min:8',
+            'roles' => 'required|string|exists:roles,role_name',
+        ]);
+        // Retrieve the user by username
+        $user = User::where('id', $request->id_user)->firstOrFail();
+
+        // Update the user's data
+        $user->name = $request->name;
+        $user->role = $request->roles;
+
+        // If a new password is provided, hash it and update the password
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+
+        // Save the updated user
+        $user->save();
+
+        // Redirect back with a success message
+        return redirect()->route('user')->with('success', 'User updated successfully.');
     }
 
     /**

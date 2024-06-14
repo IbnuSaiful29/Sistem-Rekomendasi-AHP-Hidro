@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('ratio_index', function (Blueprint $table) {
             $table->id();
             $table->string('matrix');
-            $table->string('nilai-ratio');
+            $table->string('nilai_ratio');
         });
     }
 

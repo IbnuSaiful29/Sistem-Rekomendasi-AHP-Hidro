@@ -3,7 +3,7 @@
 
 <div role="main" class="main">
 
-    <section class="section section-with-shape-divider section-height-5 overlay overlay-show border-0 m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'parallaxHeight': '120%', 'fadeIn': true}" data-image-src="img/demos/restaurant/backgrounds/background-1.jpg">
+    <section class="section section-with-shape-divider section-height-5 overlay overlay-show border-0 m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'parallaxHeight': '120%', 'fadeIn': true}" data-image-src="img/banjir-1.jpg">
         <div class="container position-relative py-5 mb-5">
             <div class="row align-items-center h-100 mb-4">
                 <div class="col text-center">

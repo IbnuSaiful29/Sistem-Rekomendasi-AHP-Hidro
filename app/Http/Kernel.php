@@ -68,6 +68,7 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         'check.role' => \App\Http\Middleware\CheckRole::class,
         'multirole' => \App\Http\Middleware\MultiRoleMiddleware::class,
+        'redirectget' => \App\Http\Middleware\RedirectToAnotherRoute::class,
     ];
 
 }

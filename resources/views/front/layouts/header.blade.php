@@ -6,13 +6,11 @@
                     <div class="header-column justify-content-between">
                         <div class="header-row">
                             <div class="d-flex align-items-center w-100 w-sm-50pct w-md-100pct">
-                                <span class="text-color-light text-2 d-sm-none d-md-block">The best place to eat in downtown Porto!</span>
-                                <a class="text-color-light text-decoration-none font-weight-bold text-2-5 opacity-hover-9 ms-2" href="tel:1234567890">(800) 123-4567</a>
                             </div>
                             <div class="w-50pct w-md-50pct w-lg-100pct d-none d-sm-block">
                                 <span class="d-flex align-items-center justify-content-end text-color-light font-weight-semibold text-2-5">
                                     <i class="icon icon-clock font-weight-bold me-2"></i>
-                                    Mon - Sat 9:00am - 6:00pm
+                                    <span id="tanggalwaktu"></span>
                                 </span>
                             </div>
                         </div>
@@ -38,23 +36,23 @@
                                 <nav class="collapse">
                                     <ul class="nav nav-pills" id="mainNav">
                                         <li>
-                                            <a class="nav-link active" href="demo-restaurant.html">
+                                            <a class="nav-link {{ $tittle === 'Home' ? 'active' : '' }}" href="{{route('home')}}">
                                                 Home
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="nav-link" href="demo-restaurant-menu.html">
-                                                Menu
+                                            <a class="nav-link  {{ $tittle === 'Cek Rekomendasi' ? 'active' : '' }}" href="{{route('cekrekomendasi')}}">
+                                                Cek Rekomendasi
                                             </a>
                                         </li>
                                         <li>
                                             <a class="nav-link" href="demo-restaurant-about.html">
-                                                About
+                                                News
                                             </a>
                                         </li>
                                         <li>
                                             <a class="nav-link" href="demo-restaurant-blog.html">
-                                                Blog
+                                                About
                                             </a>
                                         </li>
                                         <li>
@@ -62,14 +60,9 @@
                                                 Contact
                                             </a>
                                         </li>
-                                        <li>
-                                            <a class="nav-link" href="elements.html">
-                                                Elements
-                                            </a>
-                                        </li>
                                         <li class="d-lg-none">
-                                            <a class="nav-link" href="#">
-                                                Book a Table
+                                            <a class="nav-link" href="{{route('login')}}">
+                                                Sign-in
                                             </a>
                                         </li>
                                     </ul>
@@ -79,7 +72,7 @@
                     </div>
                 </div>
                 <div class="header-column header-column-search justify-content-end align-items-center d-flex w-auto flex-row">
-                    <a href="#" class="btn btn-dark custom-btn-style-1 font-weight-semibold text-3 ws-nowrap ms-4 d-none d-lg-block"><span>Book a Table</span></a>
+                    <a href="{{route('login')}}" class="btn btn-dark custom-btn-style-1 font-weight-semibold text-3 ws-nowrap ms-4 d-none d-lg-block"><span>Sign-in</span></a>
                     <div class="header-nav-features header-nav-features-no-border">
                         <div class="header-nav-feature header-nav-features-search d-inline-flex">
                             <a href="#" class="header-nav-features-toggle text-decoration-none" data-focus="headerSearch" aria-label="Search">
@@ -97,12 +90,12 @@
                             </div>
                         </div>
                     </div>
-                    <a href="https://www.instagram.com" class="text-decoration-none text-color-dark text-color-hover-primary text-5 mx-4" target="_blank">
+                    {{-- <a href="https://www.instagram.com" class="text-decoration-none text-color-dark text-color-hover-primary text-5 mx-4" target="_blank">
                         <i class="fab fa-instagram"></i>
                     </a>
                     <a href="https://www.tripadvisor.com/" class="text-decoration-none" target="_blank">
                         <img width="32" height="32" src="img/demos/restaurant/icons/tripadvisor.svg" alt="Tripadvisor Icon" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-dark svg-fill-color-hover-primary', 'fadeIn': false}" />
-                    </a>
+                    </a> --}}
                     <button class="btn header-btn-collapse-nav" data-bs-toggle="collapse" data-bs-target=".header-nav-main nav">
                         <i class="fas fa-bars"></i>
                     </button>
@@ -111,3 +104,22 @@
         </div>
     </div>
 </header>
+@section('js')
+<script>
+    const time = Date.now();
+    const date = new Date(time);
+    const currentDate = date.toString();
+    document.getElementById("tanggalWaktu").innerHTML = currentDate;
+    // var tw = new Date();
+    // if (tw.getTimezoneOffset() == 0) (a=tw.getTime() + ( 7 *60*60*1000))
+    // else (a=tw.getTime());
+    // tw.setTime(a);
+    // var tahun= tw.getFullYear ();
+    // var hari= tw.getDay ();
+    // var bulan= tw.getMonth ();
+    // var tanggal= tw.getDate ();
+    // var hariarray=new Array("Minggu,","Senin,","Selasa,","Rabu,","Kamis,","Jum'at,","Sabtu,");
+    // var bulanarray=new Array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","Nopember","Desember");
+    // document.getElementById("tanggalwaktu").innerHTML = hariarray[hari]+" "+tanggal+" "+bulanarray[bulan]+" "+tahun+" Jam " + ((tw.getHours() < 10) ? "0" : "") + tw.getHours() + ":" + ((tw.getMinutes() < 10)? "0" : "") + tw.getMinutes() + (" WIB ");
+</script>
+@endsection

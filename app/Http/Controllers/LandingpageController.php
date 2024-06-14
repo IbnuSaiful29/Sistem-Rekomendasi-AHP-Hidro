@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class LandingpageController extends Controller
 {
     public function index(){
-        return view('front.home');
+        $data['tittle'] = 'Home';
+        return view('front.home', $data);
     }
 }

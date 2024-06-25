@@ -24,6 +24,7 @@
 
 		<!-- Web Fonts  -->
 		<link id="googleFonts" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CLora:400,500,700&display=swap" rel="stylesheet" type="text/css">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
 
 		<!-- Vendor CSS -->
 		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
@@ -76,6 +77,8 @@
 
 		<!-- Theme Initialization Files -->
 		<script src="js/theme.init.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
 
 	<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
 		<script>
@@ -148,8 +151,8 @@
 			}
 
 		</script>
-        <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="ae29a6f8-c2d0-4e2e-831d-1accd92599d4";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
-        @yield('js');
+        {{-- <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="ae29a6f8-c2d0-4e2e-831d-1accd92599d4";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script> --}}
+        @yield('js')
         <script>
             var dt = new Date();
             document.getElementById("tanggalwaktu").innerHTML = dt.toLocaleString();

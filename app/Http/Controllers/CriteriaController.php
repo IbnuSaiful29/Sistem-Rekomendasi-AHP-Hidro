@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\Criteria;
 use App\Models\PairwiseCriteria;
+use App\Models\PairwiseAlternative;
 use App\Models\RatioIndex;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class CriteriaController extends Controller
@@ -103,7 +104,36 @@ class CriteriaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        DB::beginTransaction();
+        $criteria = Criteria::findOrFail($id);
+        $pairwiseComparisonsAlternative = PairwiseAlternative::where('criteria_id', $id)->get();
+        $pairwiseComparisonsCriteriaCol = PairwiseCriteria::where('criterion_col_id', $id)->get();
+        $pairwiseComparisonsCriteriaRow = PairwiseCriteria::where('criterion_row_id', $id)->get();
+
+        // dd($pairwiseComparisonsCriteriaRow);
+
+        if ($pairwiseComparisonsAlternative->isNotEmpty()) {
+            foreach ($pairwiseComparisonsAlternative as $pairwise) {
+                $pairwise->delete();
+            }
+        }
+
+        if ($pairwiseComparisonsCriteriaCol->isNotEmpty()) {
+            foreach ($pairwiseComparisonsCriteriaRow as $pairwise) {
+                $pairwise->delete();
+            }
+        }
+
+        if ($pairwiseComparisonsCriteriaRow->isNotEmpty()) {
+            foreach ($pairwiseComparisonsCriteriaRow as $pairwise) {
+                $pairwise->delete();
+            }
+        }
+
+        $criteria->delete();
+        DB::commit();
+        return redirect()->route('criteria')->with('success', 'Criteria dan data terkait berhasil dihapus.');
+
     }
 
     public function pairwiseComparison()

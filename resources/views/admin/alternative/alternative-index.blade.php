@@ -25,10 +25,10 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="col-md-10">
-                                <h3 class="card-title">ALternatif</h3>
+                                <h3 class="card-title">Data Alternatif</h3>
                             </div>
                             <div class="col-md-2" style="display:flex;  justify-content: right;">
-                                <a href="{{route('alternative-create')}}" class="btn btn-sm btn-primary">Add Alternatif <i class="fe fe-plus"></i></a>
+                                <a href="{{route('alternative-create')}}" class="btn btn-sm btn-primary">Tambah Alternatif <i class="fe fe-plus"></i></a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -37,7 +37,7 @@
                                     <thead>
                                         <tr>
                                             <th class="wd-15p border-bottom-0">No</th>
-                                            <th class="wd-25p border-bottom-0">Alternative</th>
+                                            <th class="wd-25p border-bottom-0">Alternatif</th>
                                             <th class="wd-25p border-bottom-0">Action</th>
                                         </tr>
                                     </thead>
@@ -48,11 +48,11 @@
                                             <td>{{$alternatifItem->nama_alternatif}}</td>
                                             <td name="bstable-actions">
                                                 <div class="btn-list">
-                                                    <button id="bEdit" type="button" class="btn btn-sm btn-primary">
+                                                    <a id="bEdit" href="{{route('alternative-edit',[$alternatifItem->id])}}" class="btn btn-sm btn-primary">
                                                         <span class="fe fe-edit"> </span>
-                                                    </button>
-                                                    <button id="bDel" type="button" class="btn  btn-sm btn-danger">
-                                                        <span class="fe fe-trash-2"> </span>
+                                                    </a>
+                                                    <button id="bDel" type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $alternatifItem->id }})">
+                                                        <span class="fe fe-trash-2"></span>
                                                     </button>
                                                 </div>
                                             </td>
@@ -62,6 +62,10 @@
 
                                     </tbody>
                                 </table>
+                                <form id="delete-form" action="" method="POST" style="display: none;">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -80,5 +84,29 @@
         $(document).ready(function() {
             $('#responsive-datatable').DataTable();
         });
+    </script>
+    <!-- SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+    function confirmDelete(id) {
+        Swal.fire({
+            title: 'Anda yakin?',
+            text: "Data ini akan dihapus secara permanen!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, hapus!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                var form = document.getElementById('delete-form');
+                var action = "{{ route('alternative-delete', ':id') }}";
+                action = action.replace(':id', id);
+                form.action = action;
+                form.submit();
+            }
+        })
+    }
     </script>
 @endsection

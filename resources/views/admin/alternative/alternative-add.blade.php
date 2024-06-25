@@ -36,8 +36,8 @@
                                 </div>
                                 <div class="mb-0 mt-4 row justify-content-end">
                                     <div class="col-md-9">
-                                        <button class="btn btn-primary" type="submit">Save</button>
-                                        <a href="{{route('user')}}" class="btn btn-secondary">Cancel</a>
+                                        <button class="btn btn-primary" type="submit">Simpan</button>
+                                        <a href="{{route('alternative')}}" class="btn btn-secondary">Kembali</a>
                                         {{-- <button >Cancel</button> --}}
                                     </div>
                                 </div>

@@ -9,11 +9,11 @@
 
             <!-- PAGE-HEADER -->
             <div class="page-header">
-                <h1 class="page-title">Criteria</h1>
+                <h1 class="page-title">Kriteria</h1>
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}"><i class="fe fe-home"></i></a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Criteria</li>
+                        <li class="breadcrumb-item active" aria-current="page">Kriteria</li>
                     </ol>
                 </div>
 
@@ -25,10 +25,10 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="col-md-10">
-                                <h3 class="card-title">Criteria</h3>
+                                <h3 class="card-title">Data Kriteria</h3>
                             </div>
                             <div class="col-md-2" style="display:flex;  justify-content: right;">
-                                <a href="{{route('criteria-create')}}" class="btn btn-sm btn-primary">Add Criteria <i class="fe fe-plus"></i></a>
+                                <a href="{{route('criteria-create')}}" class="btn btn-sm btn-primary">Tambah Criteria <i class="fe fe-plus"></i></a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -37,8 +37,8 @@
                                     <thead>
                                         <tr>
                                             <th class="wd-15p border-bottom-0">No</th>
-                                            <th class="wd-25p border-bottom-0">Criteria Name</th>
-                                            <th class="wd-25p border-bottom-0">Type</th>
+                                            <th class="wd-25p border-bottom-0">Nama Kriteria</th>
+                                            <th class="wd-25p border-bottom-0">Jenis</th>
                                             <th class="wd-25p border-bottom-0">Action</th>
                                         </tr>
                                     </thead>
@@ -56,17 +56,19 @@
                                                     <a href="{{route('criteria-edit', [$criteriaItem->id] )}}" id="bDel" class="btn  btn-sm btn-primary">
                                                         <span class="fe fe-edit"></span>
                                                     </a>
-                                                    <button class="btn btn-danger btn-sm delete-button" data-id="{{ $criteriaItem->id }}">
+                                                    <button id="bDel" type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $criteriaItem->id }})">
                                                         <span class="fe fe-trash-2"></span>
                                                     </button>
                                                 </div>
                                             </td>
                                         </tr>
                                         @endforeach
-
-
                                     </tbody>
                                 </table>
+                                <form id="delete-form" action="" method="POST" style="display: none;">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -81,33 +83,28 @@
 </div>
 @endsection
 @section('js')
-    {{-- <script>
-        $(document).ready(function() {
-            $('.delete-button').click(function() {
-                var criterionId = $(this).data('id');
-                var row = $('#criterion-' + criterionId);
+  <!-- SweetAlert JS -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-                if (confirm('Are you sure you want to delete this criteria?')) {
-                    $.ajax({
-                        url: '{{route('criteria-delete')}}' + criterionId,
-                        type: 'DELETE',
-                        data: {
-                            _token: '{{ csrf_token() }}'
-                        },
-                        success: function(response) {
-                            if (response.success) {
-                                row.remove();
-                                alert(response.success);
-                            } else {
-                                alert(response.error);
-                            }
-                        },
-                        error: function(xhr) {
-                            alert('An error occurred while deleting the criteria.');
-                        }
-                    });
-                }
-            });
-        });
-    </script> --}}
+  <script>
+  function confirmDelete(id) {
+      Swal.fire({
+          title: 'Anda yakin?',
+          text: "Data ini akan dihapus secara permanen! dan semua data yang terkait akan dihapus juga",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Ya, hapus!'
+      }).then((result) => {
+          if (result.isConfirmed) {
+              var form = document.getElementById('delete-form');
+              var action = "{{ route('criteria-delete', ':id') }}";
+              action = action.replace(':id', id);
+              form.action = action;
+              form.submit();
+          }
+      })
+  }
+  </script>
 @endsection

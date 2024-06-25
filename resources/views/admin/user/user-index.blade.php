@@ -58,8 +58,8 @@
                                                         <span class="fe fe-info"> </span>
                                                     </button>
                                                     <a href="{{route('user-edit', [$userItem->id])}}" id="bEdit" class="btn btn-sm btn-primary"> <span class="fe fe-edit"> </span></a>
-                                                    <button id="bDel" type="button" class="btn  btn-sm btn-danger">
-                                                        <span class="fe fe-trash-2"> </span>
+                                                    <button id="bDel" type="button" class="btn btn-sm btn-danger" onclick="confirmDelete({{ $userItem->id }})">
+                                                        <span class="fe fe-trash-2"></span>
                                                     </button>
                                                 </div>
                                             </td>
@@ -69,16 +69,44 @@
 
                                     </tbody>
                                 </table>
+                                <form id="delete-form" action="" method="POST" style="display: none;">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- End Row -->
-
         </div>
         <!-- CONTAINER CLOSED -->
-
     </div>
 </div>
+@endsection
+@section('js')
+    <!-- SweetAlert JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    function confirmDelete(id) {
+        Swal.fire({
+            title: 'Anda yakin?',
+            text: "Data ini akan dihapus secara permanen!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, hapus!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                var form = document.getElementById('delete-form');
+                var action = "{{ route('user-delete', ':id') }}";
+                action = action.replace(':id', id);
+                form.action = action;
+                form.submit();
+            }
+        })
+    }
+</script>
 @endsection

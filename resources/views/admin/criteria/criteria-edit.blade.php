@@ -13,7 +13,8 @@
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}"><i class="fe fe-home"></i></a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Kriteria</li>
+                        <li class="breadcrumb-item" aria-current="page"><a href="{{route('criteria')}}">Kriteria</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit Kriteria</li>
                     </ol>
                 </div>
 
@@ -23,7 +24,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Form Tambah Kriteria</h4>
+                            <h4 class="card-title">Form Edit Kriteria</h4>
                         </div>
                         <div class="card-body">
                             <form class="form-horizontal" action="{{route('criteria-update')}}" method="POST">

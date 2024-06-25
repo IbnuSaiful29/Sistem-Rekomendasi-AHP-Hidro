@@ -4,7 +4,7 @@
 <div role="main" class="main">
 
     <section class="section section-with-shape-divider section-height-5 overlay overlay-show border-0 m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'parallaxHeight': '120%', 'fadeIn': true}" data-image-src="img/banjir-1.jpg">
-        <div class="container position-relative py-5 mb-5">
+        {{-- <div class="container position-relative py-5 mb-5">
             <div class="row align-items-center h-100 mb-4">
                 <div class="col text-center">
                     <div class="text-color-primary d-inline-flex align-items-center custom-font-secondary text-4">
@@ -30,13 +30,41 @@
                     c33.7,8.68,61.62,17.79,82,25C1130.33,91.33,791.67,91.67,453,92z"/>
                 <rect y="90" fill="#FFF" width="1920" height="26"/>
             </svg>
+        </div> --}}
+        <div class="container position-relative py-5 mb-5">
+            <div class="row align-items-center h-100 mb-4">
+                <div class="col text-center">
+                    <div class="text-color-primary d-inline-flex align-items-center custom-font-secondary text-4">
+                        <div class="custom-line appear-animation" data-appear-animation="fadeInLeftShorterPlus" data-appear-animation-delay="600"></div>
+                        <div class="overflow-hidden">
+                            <span class="d-block positive-ls-2 font-weight-medium text-4 px-4 appear-animation" data-appear-animation="maskUp" data-appear-animation-delay="300">Langkah Bijak di Era Ketidakpastian</span>
+                        </div>
+                        <div class="custom-line appear-animation" data-appear-animation="fadeInRightShorterPlus" data-appear-animation-delay="600"></div>
+                    </div>
+                    <h1 class="text-color-light font-weight-bold positive-ls-1 line-height-1 mb-3 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="700">Sistem Rekomendasi Penanganan Bencana Banjir</h1>
+                    <p class="text-color-light text-4 opacity-8 pb-3 mb-4" data-plugin-animated-letters data-plugin-options="{'startDelay': 1100, 'minWindowWidth': 0}" style="height: 42px;">Cek Solusi Terbaik untuk Mengatasi Banjir di Wilayah Anda!</p>
+                    <a href="{{route('cekrekomendasi')}}" class="btn btn-light btn-outline text-2-5 text-color-light border-color-light-2 font-weight-medium positive-ls-2 text-color-hover-dark px-5 btn-py-3 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="2200">CEK REKOMENDASI</a>
+                </div>
+            </div>
         </div>
+        <a href="#aboutus" data-hash data-hash-offset="0" data-hash-offset-lg="100" data-hash-force="true" class="text-decoration-none text-color-dark text-color-hover-primary text-5-5 position-absolute transform3dx-n50 left-50pct bottom-5 mb-4 z-index-2">
+            <i class="icons icon-arrow-down font-weight-bold"></i>
+        </a>
+        <div class="shape-divider shape-divider-bottom shape-divider-reverse-y" style="height: 116px;">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1920 116" preserveAspectRatio="xMinYMin">
+                <path fill="#FFF" d="M453,92c11.7-4.87,28.46-11.43,49-18c42.29-13.52,76.36-19.33,115-25c51.58-7.57,100.28-14.72,171-20
+                    c24.87-1.86,82.88-5.76,158-6c69.99-0.23,122.54,2.82,159,5c51.18,3.06,95.17,5.69,155,14c71.5,9.94,115.42,21.02,127,24
+                    c33.7,8.68,61.62,17.79,82,25C1130.33,91.33,791.67,91.67,453,92z"/>
+                <rect y="90" fill="#FFF" width="1920" height="26"/>
+            </svg>
+        </div>
+
     </section>
 
-    <div id="aboutus" class="container py-5 mt-3 mb-5">
+    {{-- <div id="aboutus" class="container py-5 mt-3 mb-5">
         <div class="row row-gutter-sm align-items-center justify-content-center">
             <div class="col-6 col-md-4 col-lg-3 align-self-start">
-                <img src="img/demos/restaurant/generic/generic-1-big.jpg" class="img-fluid box-shadow-4 rounded-0" alt="Restaurant inside showcase 1" />
+                <img src="img/" class="img-fluid box-shadow-4 rounded-0" alt="Restaurant inside showcase 1" />
             </div>
             <div class="col-6 col-md-4 col-lg-3 align-self-start mb-5 mb-lg-0">
                 <img src="img/demos/restaurant/generic/generic-2-small.jpg" class="img-fluid box-shadow-4 rounded-0 mb-3 mb-sm-4" alt="Restaurant inside showcase 2" />
@@ -49,9 +77,27 @@
                 <a href="#" class="btn btn-dark font-weight-medium text-3 btn-px-4 py-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="900">More About Us</a>
             </div>
         </div>
+    </div> --}}
+    <div id="aboutus" class="container py-5 mt-3 mb-5">
+        <div class="row row-gutter-sm align-items-center justify-content-center">
+            <div class="col-6 col-md-4 col-lg-3 align-self-start">
+                <img src="img/banjir-indramayu-20.jpg" class="img-fluid box-shadow-4 rounded-0" alt="Flood handling showcase 1" />
+            </div>
+            <div class="col-6 col-md-4 col-lg-3 align-self-start mb-5 mb-lg-0">
+                <img src="img/banjir-indramau-3.jpg" class="img-fluid box-shadow-4 rounded-0 mb-3 mb-sm-4" alt="Flood handling showcase 2" />
+                <img src="img/banjir-di-indramayu_169.jpeg" class="img-fluid box-shadow-4 rounded-0" alt="Flood handling showcase 3" />
+            </div>
+            <div class="col-lg-6 ps-lg-3 ps-xl-5">
+                <h2 class="text-color-primary positive-ls-3 text-4 line-height-3 mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">TENTANG KAMI</h2>
+                <h3 class="text-color-dark text-transform-none text-9 line-height-3 font-weight-medium mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">Menggunakan <span class="highlight highlight-primary highlight-bg-opacity highlight-animated" data-appear-animation="highlight-animated-start" data-appear-animation-delay="1200" data-plugin-options="{'flagClassOnly': true}">teknologi</span> untuk memberikan rekomendasi penanganan banjir yang efektif.</h3>
+                <p class="text-3-5 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="700">Sistem Rekomendasi Penanganan Bencana Banjir adalah platform yang dirancang untuk membantu masyarakat dan pemerintah dalam mengambil langkah-langkah yang tepat untuk mengatasi banjir. Dengan menggunakan data terbaru dan algoritma canggih, sistem ini memberikan rekomendasi yang disesuaikan dengan kondisi lokal.</p>
+                <a href="#" class="btn btn-dark font-weight-medium text-3 btn-px-4 py-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="900">Lebih Lanjut Tentang Kami</a>
+            </div>
+        </div>
     </div>
 
-    <section class="section section-height-2 border-0 m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'parallaxHeight': '130%', 'fadeIn': true}" data-image-src="img/demos/restaurant/backgrounds/background-2.jpg">
+
+    {{-- <section class="section section-height-2 border-0 m-0" data-plugin-parallax data-plugin-options="{'speed': 1.5, 'parallaxHeight': '130%', 'fadeIn': true}" data-image-src="img/demos/restaurant/backgrounds/background-2.jpg">
         <div class="container mb-4">
             <div class="row justify-content-center appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="300">
                 <div class="col-lg-10">
@@ -91,9 +137,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
-    <div class="container py-5 my-5">
+    {{-- <div class="container py-5 my-5">
         <div class="row justify-content-center mb-5">
             <div class="col-lg-10 text-center">
                 <h2 class="text-color-primary positive-ls-3 text-4 line-height-3 mb-2">WHAT WE OFFER</h2>
@@ -367,9 +413,9 @@
                 <a href="demo-restaurant-contact.html" class="btn btn-dark custom-btn-style-1 font-weight-medium text-3 btn-px-5 py-3"><span>View Full Menu</span></a>
             </div>
         </div>
-    </div>
+    </div> --}}
 
-    <section class="section section-height-3 bg-color-grey-scale-1 border-0 m-0">
+    {{-- <section class="section section-height-3 bg-color-grey-scale-1 border-0 m-0">
         <div class="container pt-2">
             <div class="row">
                 <div class="col text-center">
@@ -415,9 +461,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
-    <section class="section bg-transparent border border-top-0 border-end-0 border-start-0 position-relative m-0">
+    {{-- <section class="section bg-transparent border border-top-0 border-end-0 border-start-0 position-relative m-0">
         <img src="img/demos/restaurant/backgrounds/background-top-left-1.jpg" class="img-fluid position-absolute top-0 left-0" alt="Author left drawn food background image" />
         <img src="img/demos/restaurant/backgrounds/background-top-right-1.jpg" class="img-fluid position-absolute top-0 right-0 d-none d-md-block" alt="Author right drawn food background image" />
         <div class="container">
@@ -438,7 +484,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <div class="container pt-4 pb-3 my-5">
         <div class="row">

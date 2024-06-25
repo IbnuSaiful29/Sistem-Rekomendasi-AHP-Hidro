@@ -13,7 +13,8 @@
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}"><i class="fe fe-home"></i></a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Kriteria</li>
+                        <li class="breadcrumb-item" aria-current="page"><a href="{{route('criteria')}}">Kriteria</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Tambah Kriteria</li>
                     </ol>
                 </div>
 
@@ -49,7 +50,7 @@
                                 <div class="mb-0 mt-4 row justify-content-end">
                                     <div class="col-md-9">
                                         <button class="btn btn-primary" type="submit">Save</button>
-                                        <a href="{{route('user')}}" class="btn btn-secondary">Cancel</a>
+                                        <a href="{{route('criteria')}}" class="btn btn-secondary">Cancel</a>
                                         {{-- <button >Cancel</button> --}}
                                     </div>
                                 </div>

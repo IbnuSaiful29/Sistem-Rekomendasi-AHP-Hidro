@@ -62,22 +62,34 @@ class AlternativeController extends Controller
      */
     public function edit($id)
     {
-        $data_roles = Roles::all();
-        $data['roles'] = $data_roles;
-
-        $data_user = User::where('id', $id)->get();
-        $data['data_user'] = $data_user;
+        $data_alternative = Alternatif::where('id', $id)->get();
+        $data['data_alternative'] = $data_alternative;
 
         $data['tittle'] = 'Data User';
-        return view('admin.user.user-edit', $data);
+        return view('admin.alternative.alternative-edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        // Validasi data yang masuk
+        $request->validate([
+            'alternative_name' => 'required|string|max:255',
+        ]);
+
+        // Cari alternatif berdasarkan ID
+        $alternative = Alternatif::findOrFail($request->alternative_id);
+
+        // Perbarui data alternatif
+        $alternative->nama_alternatif = $request->alternative_name;
+
+        // Simpan perubahan
+        $alternative->save();
+
+        // Redirect kembali dengan pesan sukses
+        return redirect()->route('alternative')->with('success', 'Alternatif berhasil diperbarui.');
     }
 
     /**
@@ -85,16 +97,25 @@ class AlternativeController extends Controller
      */
     public function destroy(string $id)
     {
-        $criteria = Criteria::findOrFail($id);
+        // Cari alternatif berdasarkan ID
+        $alternative = Alternative::findOrFail($id);
 
-        // Cek apakah kriteria terkait dengan data lain
-        if ($criteria->pairwiseComparisons()->count() > 0) {
-            return redirect()->route('criteria.index')->with('error', 'Cannot delete criteria with related data.');
+        // Ambil semua data PairwiseAlternative yang terkait dengan alternative_id
+        $pairwiseComparisons = PairwiseAlternative::where('alternative_id', $id)->get();
+
+        // Cek apakah ada data PairwiseAlternative terkait
+        if ($pairwiseComparisons->isNotEmpty()) {
+            // Hapus semua data PairwiseAlternative terkait
+            foreach ($pairwiseComparisons as $pairwise) {
+                $pairwise->delete();
+            }
         }
 
-        $criteria->delete();
+        // Hapus data alternatif
+        $alternative->delete();
 
-        return redirect()->route('criteria.index')->with('success', 'Criteria deleted successfully.');
+        // Redirect kembali dengan pesan sukses
+        return redirect()->route('alternative')->with('success', 'Alternatif dan data terkait berhasil dihapus.');
     }
 
     public function pairwiseComparison()

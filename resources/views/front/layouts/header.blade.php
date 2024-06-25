@@ -45,25 +45,28 @@
                                                 Cek Rekomendasi
                                             </a>
                                         </li>
-                                        <li>
+                                        {{-- <li>
                                             <a class="nav-link" href="demo-restaurant-about.html">
                                                 News
                                             </a>
-                                        </li>
+                                        </li> --}}
                                         <li>
-                                            <a class="nav-link" href="demo-restaurant-blog.html">
+                                            <a class="nav-link {{ $tittle === 'About' ? 'active' : '' }}" href="{{route('about')}}">
                                                 About
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="nav-link" href="demo-restaurant-contact.html">
+                                            <a class="nav-link {{ $tittle === 'Contact' ? 'active' : '' }}" href="{{route('contact')}}">
                                                 Contact
                                             </a>
                                         </li>
                                         <li class="d-lg-none">
+                                            @guest
+                                            {{-- <a href="{{ route('login') }}" class="btn btn-dark custom-btn-style-1 font-weight-semibold text-3 ws-nowrap ms-4 d-none d-lg-block"><span>Sign-in</span></a> --}}
                                             <a class="nav-link" href="{{route('login')}}">
                                                 Sign-in
                                             </a>
+                                            @endguest
                                         </li>
                                     </ul>
                                 </nav>
@@ -72,12 +75,36 @@
                     </div>
                 </div>
                 <div class="header-column header-column-search justify-content-end align-items-center d-flex w-auto flex-row">
-                    <a href="{{route('login')}}" class="btn btn-dark custom-btn-style-1 font-weight-semibold text-3 ws-nowrap ms-4 d-none d-lg-block"><span>Sign-in</span></a>
+                    {{-- <a href="{{route('login')}}" class="btn btn-dark custom-btn-style-1 font-weight-semibold text-3 ws-nowrap ms-4 d-none d-lg-block"><span>Sign-in</span></a> --}}
+                    <!-- Jika pengguna belum login -->
+                @guest
+                <a href="{{ route('login') }}" class="btn btn-dark custom-btn-style-1 font-weight-semibold text-3 ws-nowrap ms-4 d-none d-lg-block"><span>Sign-in</span></a>
+                @endguest
+
+                <!-- Jika pengguna sudah login -->
+                @auth
+                <div class="dropdown d-none d-lg-block">
+                    <a href="#" class="btn btn-dark custom-btn-style-1 font-weight-semibold text-3 ws-nowrap ms-4" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="icon icon-user"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
+                        <li>
+                            <form id="logout-form" action="{{ route('destroy') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                            <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+                @endauth
+{{--
                     <div class="header-nav-features header-nav-features-no-border">
                         <div class="header-nav-feature header-nav-features-search d-inline-flex">
                             <a href="#" class="header-nav-features-toggle text-decoration-none" data-focus="headerSearch" aria-label="Search">
                                 <i class="icons icon-magnifier header-nav-top-icon text-4-5 text-color-dark text-color-hover-primary font-weight-bold top-3"></i>
                             </a>
+
                             <div class="header-nav-features-dropdown header-nav-features-dropdown-mobile-fixed border-radius-0" id="headerTopSearchDropdown">
                                 <form role="search" action="page-search-results.html" method="get">
                                     <div class="simple-search input-group">
@@ -89,13 +116,30 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     {{-- <a href="https://www.instagram.com" class="text-decoration-none text-color-dark text-color-hover-primary text-5 mx-4" target="_blank">
                         <i class="fab fa-instagram"></i>
                     </a>
                     <a href="https://www.tripadvisor.com/" class="text-decoration-none" target="_blank">
                         <img width="32" height="32" src="img/demos/restaurant/icons/tripadvisor.svg" alt="Tripadvisor Icon" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-dark svg-fill-color-hover-primary', 'fadeIn': false}" />
                     </a> --}}
+                    <!-- Dropdown Menu for Authenticated Users -->
+                    @auth
+                    <div class="dropdown d-lg-none d-flex">
+                        <a href="#" class="btn btn-dark font-weight-semibold text-3 ws-nowrap ms-4" id="userDropdownMobile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="icon icon-user"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="userDropdownMobile">
+                            <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
+                            <li>
+                                <form id="logout-form-mobile" action="{{ route('destroy') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                                <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form-mobile').submit();">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                    @endauth
                     <button class="btn header-btn-collapse-nav" data-bs-toggle="collapse" data-bs-target=".header-nav-main nav">
                         <i class="fas fa-bars"></i>
                     </button>

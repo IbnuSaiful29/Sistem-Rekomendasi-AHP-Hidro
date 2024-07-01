@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Criteria extends Model
+class Village extends Model
 {
     use HasFactory;
-    protected $table = 'kriteria';
+
+    protected $table = 'village';
     protected $guarded = [''];
 
-    public function historiPenangananCriteria()
+    public function historiCekRekomendasi()
     {
-        return $this->hasMany(HistoriPenangananCriteria::class, 'id_criteria');
+        return $this->hasMany(HistoriCekRekomendasi::class, 'id_desa');
     }
 }

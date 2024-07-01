@@ -36,12 +36,20 @@
                                     @foreach ($criteria as $criterion)
                                         @php
                                             $data = $pairwise->where('criteria_id', $criterion->id)->first();
-                                            $value = $data ? $data->value : 0;
+                                            $selected_value = $data ? $data->value : 0;
                                         @endphp
                                         <div class="row mb-4">
                                             <label for="value_{{ $criterion->id }}" class="col-md-3 form-label">{{ $criterion->nama_kriteria }}</label>
                                             <div class="col-md-9">
-                                                <input type="text" name="value_{{ $criterion->id }}" id="value_{{ $criterion->id }}" value="{{ $value }}" class="form-control">
+                                                {{-- <input type="text" name="value_{{ $criterion->id }}" id="value_{{ $criterion->id }}" value="{{ $value }}" class="form-control"> --}}
+                                                <select name="value_{{ $criterion->id }}" id="value_{{ $criterion->id }}" class="form-control" required>
+                                                    <option value="" hidden>Pilih</option>
+                                                    @if (isset($data_criteria_option[$criterion->id]['options']))
+                                                        @foreach ($data_criteria_option[$criterion->id]['options'] as $option_name => $option_value)
+                                                            <option value="{{ $option_value }}"  @if ($selected_value == $option_value) selected @endif>{{ $option_name }}</option>
+                                                        @endforeach
+                                                    @endif
+                                                </select>
                                             </div>
                                         </div>
                                     @endforeach

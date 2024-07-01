@@ -11,6 +11,8 @@ use App\Http\Controllers\LandingpageController;
 use App\Http\Controllers\CekRekomendasiController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HistoriCekPenangananController;
+use App\Http\Controllers\VillageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,11 +94,21 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('/perbandingan/alternative', [AlternativeController::class, 'pairwiseComparison'])->name('pairwiseComparisonAlternative')->middleware('auth')->middleware('multirole:superadmin,pakar');
     Route::get('/perbandingan/alternative/edit/{id}', [AlternativeController::class, 'editPairwiseComparison'])->name('pairwiseComparisonAlternativeEdit')->middleware('auth')->middleware('multirole:superadmin,pakar');
     // Route::post('/perbandingan/alternative/edit-save', [AlternativeController::class, 'editSavePairwiseComparison'])->name('pairwiseComparisonAlternativeEditSave')->middleware('auth')->middleware('multirole:superadmin,pakar');
-    Route::post('/perbandingan/alternative/edit-save/{id}', [AlternativeController::class, 'editSavePairwiseComparison'])->name('pairwiseComparisonAlternativeEditSave')->middleware('auth')->middleware('multirole:superadmin,pakar');
+    Route::post('/perbandingan/alternative/edit-save/{id}', [AlternativeController::class, 'editSaveP   airwiseComparison'])->name('pairwiseComparisonAlternativeEditSave')->middleware('auth')->middleware('multirole:superadmin,pakar');
     Route::get('/perbandingan/alternative/rangking', [AlternativeController::class, 'showNormalizedMatrix'])->name('rangkingAlternative')->middleware('auth')->middleware('multirole:superadmin,pakar');
     Route::get('/perbandingan/alternative/rangking/{id_criteria}', [AlternativeController::class, 'compareAlternatives'])->name('rangkingCriteriaAlternative')->middleware('auth')->middleware('multirole:superadmin,pakar');
     Route::get('/perbandingan/alternative/rangking', [AlternativeController::class, 'compareAlternativesAll'])->name('rangkingCriteriaAlternativeAll')->middleware('auth')->middleware('multirole:superadmin,pakar');
 
-    //news
+    //laporan
+    Route::get('/histori/cek-penanganan', [HistoriCekPenangananController::class, 'index'])->name('historiCekPenanganan')->middleware('auth')->middleware('multirole:superadmin,pakar');
+    Route::get('/histori/cek-penanganan/detail/{id}', [HistoriCekPenangananController::class, 'show'])->name('historiCekPenangananShow')->middleware('auth')->middleware('multirole:superadmin,pakar');
+
+    //desa
+    Route::get('/village', [VillageController::class, 'index'])->name('village')->middleware('auth')->middleware('multirole:superadmin,pakar');
+    Route::get('/village/add', [VillageController::class, 'create'])->name('village-create')->middleware('auth')->middleware('multirole:superadmin,pakar');
+    Route::post('/village/store', [VillageController::class, 'store'])->name('village-store')->middleware('auth')->middleware('multirole:superadmin,pakar');
+    Route::get('/village/edit/{id}', [VillageController::class, 'edit'])->name('village-edit')->middleware('auth')->middleware('multirole:superadmin,pakar');
+    Route::post('/village/update', [VillageController::class, 'update'])->name('village-update')->middleware('auth')->middleware('multirole:superadmin,pakar');
+    Route::delete('/village/destroy/{id}', [VillageController::class, 'destroy'])->name('village-destroy')->middleware('auth')->middleware('multirole:superadmin,pakar');
 
 });

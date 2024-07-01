@@ -49,7 +49,67 @@
                                         </div>
                                     </div>
                                 </div>
+                                <br>
                                 @endforeach
+                                <div class="row mb-4">
+                                    <div class="col-md-10">
+                                        <h5>Tambahkan Value Option</h5>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button id="addOption" class="btn btn-warning">Tambah</button>
+                                    </div>
+                                </div>
+                                {{-- <div id="optionContainer">
+                                    @foreach ($data_option as $item)
+                                        <div class="row mb-4">
+                                            <label class="col-md-2 form-label">Kriteria Option</label>
+                                            <div class="col-md-5">
+                                                <input type="text" class="form-control" name="option_name[]" value="{{$item->option}}">
+                                            </div>
+                                            <label class="col-md-1 form-label">Value</label>
+                                            <div class="col-md-2">
+                                                <input type="text" class="form-control" name="option[]" value="{{$item->value}}">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button class="btn btn-danger removeOption">Hapus</button>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div> --}}
+                                <div id="optionContainer">
+                                    @if($data_option->isEmpty())
+                                        <div class="row mb-4">
+                                            <label class="col-md-2 form-label">Kriteria Option</label>
+                                            <div class="col-md-5">
+                                                <input type="text" class="form-control" name="option_name[]" value="">
+                                            </div>
+                                            <label class="col-md-1 form-label">Value</label>
+                                            <div class="col-md-2">
+                                                <input type="text" class="form-control" name="option[]" value="">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button class="btn btn-danger removeOption">Hapus</button>
+                                            </div>
+                                        </div>
+                                    @else
+                                        @foreach ($data_option as $item)
+                                            <div class="row mb-4">
+                                                <label class="col-md-2 form-label">Kriteria Option</label>
+                                                <div class="col-md-5">
+                                                    <input type="text" class="form-control" name="option_name[]" value="{{$item->option}}">
+                                                </div>
+                                                <label class="col-md-1 form-label">Value</label>
+                                                <div class="col-md-2">
+                                                    <input type="text" class="form-control" name="option[]" value="{{$item->value}}">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <button class="btn btn-danger removeOption">Hapus</button>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                </div>
+
                                 <div class="mb-0 mt-4 row justify-content-end">
                                     <div class="col-md-9">
                                         <button class="btn btn-primary" type="submit">Save</button>
@@ -65,5 +125,32 @@
         </div>
     </div>
 </div>
+
+@endsection
+@section('js')
+<script>
+    $(document).ready(function() {
+        $('#addOption').click(function(e) {
+            e.preventDefault(); // Prevent the default button action
+
+            // Clone the existing input row
+            var newRow = $('#optionContainer .row').first().clone();
+
+            // Clear the values of the cloned inputs
+            newRow.find('input').val('');
+
+            // Append the cloned row to the container
+            $('#optionContainer').append(newRow);
+        });
+
+        // Delegate the click event for dynamically added remove buttons
+        $('#optionContainer').on('click', '.removeOption', function(e) {
+            e.preventDefault(); // Prevent the default button action
+
+            // Remove the parent row of the clicked remove button
+            $(this).closest('.row').remove();
+        });
+    });
+</script>
 
 @endsection

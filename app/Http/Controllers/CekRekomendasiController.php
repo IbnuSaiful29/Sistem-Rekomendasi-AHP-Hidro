@@ -5,15 +5,40 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Alternatif;
 use App\Models\Criteria;
+use App\Models\CriteriaOption;
 use App\Models\PairwiseCriteria;
 use App\Models\PairwiseAlternative;
 use App\Models\RatioIndex;
+use App\Models\Village;
+use App\Models\HistoriCekRekomendasi;
+use App\Models\HistoriPenangananCriteria;
+use App\Models\HistoriPenangananAlternatif;
+use Illuminate\Support\Facades\DB;
 
 class CekRekomendasiController extends Controller
 {
     public function index(){
+        $data_desa = Village::all();
         $data_criteria = Criteria::all();
+        $data_criteria_option = [];
+        foreach ($data_criteria as $item_criteria) {
+            $id_criteria = $item_criteria->id;
+            $data_option = CriteriaOption::where('id_criteria', $id_criteria)->get();
+
+            $criteria_options = [];
+            foreach ($data_option as $item_option) {
+                $criteria_options[$item_option->option] = $item_option->value;
+            }
+
+            $data_criteria_option[$item_criteria->id] = [
+                'name' => $item_criteria->nama_kriteria,
+                'options' => $criteria_options
+            ];
+        }
+
         $data['data_criteria'] = $data_criteria;
+        $data['data_desa'] = $data_desa;
+        $data['data_criteria_option'] = $data_criteria_option;
         $data['tittle'] = 'Cek Rekomendasi';
         return view('front.cek-rekomendasi-penanganan', $data);
     }
@@ -36,7 +61,9 @@ class CekRekomendasiController extends Controller
 
     public function checkRecomendation(Request $request){
 
+
         $bestValues = $request->best_values;
+        // dd($bestValues);
         // Ambil semua kriteria
         $criteriaIds = Criteria::pluck('id')->toArray();
 
@@ -72,8 +99,56 @@ class CekRekomendasiController extends Controller
 
         $rankedAlternativesAll = $this->rankAlternativesAll($normalizedTotalWeights);
 
+        // dd($rankedAlternativesAll);
+
         $data['rankedAlternativesAll'] =  $rankedAlternativesAll;
 
+        DB::beginTransaction();
+
+        $save_data_histori = [
+            'id_desa' => $request->desa,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ];
+
+        $save_histori = HistoriCekRekomendasi::create($save_data_histori);
+
+        $id_histori = $save_histori->id;
+        $max_count = 5;
+        $count = 0;
+        $peringkat = 1;
+
+        foreach ($bestValues as $id_criteria_best_value => $best_value_criteria) {
+            $save_data_histori_criteria = [
+                'id_hasil_penanganan' => $id_histori,
+                'id_criteria' => $id_criteria_best_value,
+                'value' => $best_value_criteria,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ];
+
+            $histori_save_criteria = HistoriPenangananCriteria::create($save_data_histori_criteria);
+        }
+
+        foreach ($rankedAlternativesAll as $index => $alternative_item) {
+            if ($count >= $max_count) {
+                break;
+            }
+            $save_data_histori_alternatif = [
+                'id_hasil_penanganan' => $id_histori,
+                'id_alternative' => $alternative_item['id'],
+                'peringkat' => $index + 1,
+                'weight' => $alternative_item['weight'],
+                'created_at' => now(),
+                'updated_at' => now(),
+            ];
+
+            $histori_save_criteria = HistoriPenangananAlternatif::create($save_data_histori_alternatif);
+
+            $count++;
+        }
+
+        DB::commit();
 
         $data['tittle'] = 'Hasil Rekomendasi';
         return view('front.hasil-rekomendasi', $data);

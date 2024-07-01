@@ -5,6 +5,7 @@ use App\Models\Criteria;
 use App\Models\PairwiseCriteria;
 use App\Models\PairwiseAlternative;
 use App\Models\RatioIndex;
+use App\Models\CriteriaOption;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -67,8 +68,10 @@ class CriteriaController extends Controller
     public function edit($id)
     {
         $data_criteria = Criteria::where('id', $id)->get();
+        $data_option = CriteriaOption::where('id_criteria', $id)->get();
         // dd($data_criteria);
         $data['data_criteria'] = $data_criteria;
+        $data['data_option'] = $data_option;
 
         $data['tittle'] = 'Edit Criteria';
         return view('admin.criteria.criteria-edit', $data);
@@ -79,6 +82,7 @@ class CriteriaController extends Controller
      */
     public function update(Request $request)
     {
+        // dd($request);
         // Validate the incoming request data
         $request->validate([
             'criteria_name' => 'required|string|max:255',
@@ -88,12 +92,31 @@ class CriteriaController extends Controller
         // Retrieve the criteria by ID
         $criteria = Criteria::findOrFail($request->criteria_id);
 
+        DB::beginTransaction();
+
         // Update the criteria's data
         $criteria->nama_kriteria = $request->criteria_name;
         $criteria->type = $request->type;
 
         // Save the updated criteria
         $criteria->save();
+
+        $id_criteria = $criteria->id;
+        $option_name = $request->option_name;
+        $option_value = $request->option;
+        foreach ($option_name as $index => $item_name) {
+                $save_data = [
+                    'id_criteria' => $id_criteria,
+                    'option' => $item_name,
+                    'value' => $option_value[$index],
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ];
+
+                CriteriaOption::create($save_data);
+        }
+
+        DB::commit();
 
         // Redirect back with a success message
         return redirect()->route('criteria')->with('success', 'Criteria updated successfully.');

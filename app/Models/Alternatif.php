@@ -16,4 +16,9 @@ class Alternatif extends Model
     {
         return $this->hasMany(PairwiseAlternative::class, 'alternative_id');
     }
+
+    public function historiPenangananAlternatif()
+    {
+        return $this->hasMany(HistoriPenangananAlternatif::class, 'id_alternatif');
+    }
 }

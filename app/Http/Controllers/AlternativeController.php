@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Alternatif;
 use App\Models\Criteria;
+use App\Models\CriteriaOption;
 use App\Models\PairwiseCriteria;
 use App\Models\PairwiseAlternative;
 use App\Models\RatioIndex;
@@ -98,7 +99,7 @@ class AlternativeController extends Controller
     public function destroy(string $id)
     {
         // Cari alternatif berdasarkan ID
-        $alternative = Alternative::findOrFail($id);
+        $alternative = Alternatif::findOrFail($id);
 
         // Ambil semua data PairwiseAlternative yang terkait dengan alternative_id
         $pairwiseComparisons = PairwiseAlternative::where('alternative_id', $id)->get();
@@ -135,6 +136,23 @@ class AlternativeController extends Controller
         $data_alternative = Alternatif::find($id);
         $data_criteria = Criteria::all();
         $data_pairwise = PairwiseAlternative::where('alternative_id', $id)->get();
+        $data_criteria_option = [];
+        foreach ($data_criteria as $item_criteria) {
+            $id_criteria = $item_criteria->id;
+            $data_option = CriteriaOption::where('id_criteria', $id_criteria)->get();
+
+            $criteria_options = [];
+            foreach ($data_option as $item_option) {
+                $criteria_options[$item_option->option] = $item_option->value;
+            }
+
+            $data_criteria_option[$item_criteria->id] = [
+                'name' => $item_criteria->nama_kriteria,
+                'options' => $criteria_options
+            ];
+        }
+
+        $data['data_criteria_option'] = $data_criteria_option;
         $data['alternative'] = $data_alternative;
         $data['criteria'] = $data_criteria;
         $data['pairwise'] = $data_pairwise;

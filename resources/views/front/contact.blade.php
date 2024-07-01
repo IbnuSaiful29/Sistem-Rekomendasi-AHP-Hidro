@@ -176,7 +176,7 @@
         </div>
     </div>
 
-    <div style="background: #f9f9f9; padding-top: 10px; padding-bottom:50px;">
+    <div class="container" style="padding-bottom:50px;">
         <h1 class="text-center mt-5">Contact Us</h1>
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -189,7 +189,7 @@
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Nama</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}">
+                        <input type="text" style="border: 1px solid grey" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}">
                         @error('name')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -198,7 +198,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
+                        <input type="email" style="border: 1px solid grey" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
                         @error('email')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -207,7 +207,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="message" class="form-label">Pesan</label>
-                        <textarea class="form-control @error('message') is-invalid @enderror" id="message" name="message" rows="5">{{ old('message') }}</textarea>
+                        <textarea style="border: 1px solid grey" class="form-control @error('message') is-invalid @enderror" id="message" name="message" rows="5">{{ old('message') }}</textarea>
                         @error('message')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -216,43 +216,6 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Ksirim Pesan</button>
                 </form>
-            </div>
-        </div>
-    </div>
-
-    <div class="container py-5 my-5">
-        <div class="row row-gutter-sm align-items-lg-center">
-            <div class="col-12 col-lg-4">
-                <h2 class="alternative-font-4 text-color-dark font-weight-bold line-height-3 text-5-5 mb-1 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="250">123 Street Name, Los Angeles, CA</h2>
-                <div class="pb-2 mb-4">
-                    <a href="demo-restaurant-contact.html#get-direction" data-hash data-hash-offset="0" data-hash-offset-lg="110" class="d-inline-block text-decoration-underline-2 font-weight-bold border-color-primary text-decoration-none text-3-5 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="450">Get Directions</a>
-                </div>
-                <ul class="list list-unstyled">
-                    <li class="d-flex appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="650">
-                        <img width="27" height="27" src="img/demos/restaurant/icons/phone.svg" alt="Phone Icon" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-dark position-relative bottom-2'}" />
-                        <a href="tel:+1234567890" class="text-decoration-none text-color-dark text-color-hover-primary font-weight-bold line-height-7 text-3-5 ms-2">(800) 123-4567</a>
-                    </li>
-                    <li class="d-flex my-4 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="850">
-                        <img width="27" height="27" src="img/demos/restaurant/icons/email.svg" alt="Email Icon" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-dark'}" />
-                        <a href="mailto:porto@domain.com" class="text-decoration-none text-color-dark text-color-hover-primary font-weight-bold line-height-7 text-3-5 ms-2">porto@domain.com</a>
-                    </li>
-                </ul>
-                <p class="mb-4 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="1050">We are here to assist you with any questions or concerns. Feel free to visit, call, or email us, and we will get back to you promptly!</p>
-                <div class="d-flex align-items-center appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="1250">
-                    <span class="text-color-dark font-weight-semibold text-3-5">Social Links:</span>
-                    <ul class="social-icons social-icons-clean social-icons-medium ms-3">
-                        <li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                        <li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
-                        <li class="social-icons-linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-7 col-lg-4 ms-auto">
-                <img src="img/demos/restaurant/generic/generic-1-big-plus.jpg" class="img-fluid box-shadow-4 rounded-0" alt="Restaurant Interior 1" />
-            </div>
-            <div class="col-5 col-lg-3 ps-xs-1">
-                <img src="img/demos/restaurant/generic/generic-2-small.jpg" class="img-fluid box-shadow-4 rounded-0 mb-3 mb-sm-4" alt="Restaurant Interior 2" />
-                <img src="img/demos/restaurant/generic/generic-3-small.jpg" class="img-fluid box-shadow-4 rounded-0" alt="Restaurant Interior 3" />
             </div>
         </div>
     </div>

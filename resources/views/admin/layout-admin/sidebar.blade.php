@@ -27,6 +27,11 @@
                                 class="side-menu__icon fe fe-home"></i><span
                                 class="side-menu__label">Dashboard</span></a>
                     </li>
+                    <li>
+                        <a class="side-menu__item {{ $tittle === 'Data Criteria' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('historiCekPenanganan')}}"><i
+                                class="side-menu__icon fe fe-user"></i><span
+                                class="side-menu__label">Histori Cek Rekomendasi</span></a>
+                    </li>
                     <li class="sub-category">
                         <h3>Data Management</h3>
                     </li>
@@ -45,14 +50,19 @@
                                 class="side-menu__icon fe fe-user"></i><span
                                 class="side-menu__label">Alternative</span></a>
                     </li>
-                    <li class="sub-category">
+                    <li>
+                        <a class="side-menu__item {{ $tittle === 'Data Desa' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('village')}}"><i
+                                class="side-menu__icon fe fe-user"></i><span
+                                class="side-menu__label">Data Desa</span></a>
+                    </li>
+                    {{-- <li class="sub-category">
                         <h3>SEO</h3>
                     </li>
                     <li>
                         <a class="side-menu__item {{ $tittle === 'Data Alternative' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('alternative')}}"><i
                                 class="side-menu__icon fe fe-book-open"></i><span
                                 class="side-menu__label">News</span></a>
-                    </li>
+                    </li> --}}
                     <li class="sub-category">
                         <h3>AHP</h3>
                     </li>
@@ -113,18 +123,28 @@
                                 class="side-menu__icon fe fe-home"></i><span
                                 class="side-menu__label">Dashboard</span></a>
                     </li>
+                    <li>
+                        <a class="side-menu__item {{ $tittle === 'Data Criteria' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('historiCekPenanganan')}}"><i
+                                class="side-menu__icon fe fe-user"></i><span
+                                class="side-menu__label">Histori Cek Rekomendasi</span></a>
+                    </li>
                     <li class="sub-category">
                         <h3>Data Management</h3>
                     </li>
                     <li>
                         <a class="side-menu__item {{ $tittle === 'Data Criteria' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('criteria')}}"><i
                                 class="side-menu__icon fe fe-user"></i><span
-                                class="side-menu__label">Criteria</span></a>
+                                class="side-menu__label">Data Kriteria</span></a>
                     </li>
                     <li>
                         <a class="side-menu__item {{ $tittle === 'Data Alternative' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('alternative')}}"><i
                                 class="side-menu__icon fe fe-user"></i><span
-                                class="side-menu__label">Alternative</span></a>
+                                class="side-menu__label">Data Alternatif</span></a>
+                    </li>
+                    <li>
+                        <a class="side-menu__item {{ $tittle === 'Data Alternative' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('alternative')}}"><i
+                                class="side-menu__icon fe fe-user"></i><span
+                                class="side-menu__label">Data Desa</span></a>
                     </li>
                     <li class="sub-category">
                         <h3>AHP</h3>

@@ -34,6 +34,9 @@
     <!-- COLOR SKIN CSS -->
     <link id="theme" rel="stylesheet" type="text/css" media="all" href="assets/colors/color1.css" />
 
+
+    @yield('css')
+
 </head>
 
 <body class="app sidebar-mini ltr light-mode">

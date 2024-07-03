@@ -13,7 +13,8 @@
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}"><i class="fe fe-home"></i></a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Alternatif</li>
+                        <li class="breadcrumb-item" aria-current="page"><a href="{{route('alternative')}}">Alternatif</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Detail Alternatif</li>
                     </ol>
                 </div>
 
@@ -23,32 +24,28 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Form Tambah Alternatif</h4>
+                            <h4 class="card-title">Detail Alternatif</h4>
                         </div>
                         <div class="card-body">
-                            <form class="form-horizontal" action="{{route('alternative-update')}}" method="POST">
-                                @csrf
                                 @foreach ($data_alternative as $item)
                                 <div class=" row mb-4">
                                     <label for="inputName" class="col-md-3 form-label">Alternatif</label>
                                     <div class="col-md-9">
-                                        <input type="text" name="alternative_id" value="{{$item->id}}" hidden>
-                                        <input type="text" class="form-control" id="inputName" name="alternative_name" value="{{$item->nama_alternatif}}">
+                                        <p>{{$item->nama_alternatif}}</p>
                                     </div>
                                 </div>
 
                                 <div class=" row mb-4">
                                     <label for="inputName" class="col-md-3 form-label">Deskripsi</label>
                                     <div class="col-md-9">
-                                        <textarea class="form-control" id="inputDescription" name="description">{{$item->description}}</textarea>
+                                        <p>{{$item->description}}</p>
                                     </div>
                                 </div>
 
                                 @endforeach
-                                <div class="mb-0 mt-4 row justify-content-end">
+                                <div class="mb-0 mt-4 row">
                                     <div class="col-md-9">
-                                        <button class="btn btn-primary" type="submit">Save</button>
-                                        <a href="{{route('alternative')}}" class="btn btn-secondary">Cancel</a>
+                                        <a href="{{route('alternative')}}" class="btn btn-secondary">Kembali</a>
                                         {{-- <button >Cancel</button> --}}
                                     </div>
                                 </div>

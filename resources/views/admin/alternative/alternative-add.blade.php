@@ -31,7 +31,13 @@
                                 <div class=" row mb-4">
                                     <label for="inputName" class="col-md-3 form-label">Alternatif</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" id="inputName" name="alternative_name" placeholder="Alternatif">
+                                        <input type="text" class="form-control" id="inputName" name="alternative_name" placeholder="Masukan Alternatif">
+                                    </div>
+                                </div>
+                                <div class=" row mb-4">
+                                    <label for="inputName" class="col-md-3 form-label">Deskripsi</label>
+                                    <div class="col-md-9">
+                                        <textarea class="form-control" id="inputDescription" name="description" placeholder="Masukan Deskripsi"></textarea>
                                     </div>
                                 </div>
                                 <div class="mb-0 mt-4 row justify-content-end">

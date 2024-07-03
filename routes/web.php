@@ -78,6 +78,7 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('/alternative', [AlternativeController::class, 'index'])->name('alternative')->middleware('auth')->middleware('multirole:superadmin,pakar');
     Route::get('/alternative/add', [AlternativeController::class, 'create'])->name('alternative-create')->middleware('auth')->middleware('multirole:superadmin,pakar');
     Route::get('/alternative/edit/{id}', [AlternativeController::class, 'edit'])->name('alternative-edit')->middleware('auth')->middleware('multirole:superadmin,pakar');
+    Route::get('/alternative/detail/{id}', [AlternativeController::class, 'show'])->name('alternative-show')->middleware('auth')->middleware('multirole:superadmin,pakar');
     Route::post('/alternative/update', [AlternativeController::class, 'update'])->name('alternative-update')->middleware('auth')->middleware('multirole:superadmin,pakar');
     Route::post('/alternarive/add-save', [AlternativeController::class, 'store'])->name('alternative-store')->middleware('auth')->middleware('multirole:superadmin,pakar');
     Route::delete('/alternative-delete/{id}', [AlternativeController::class, 'destroy'])->name('alternative-delete')->middleware('auth')->middleware('multirole:superadmin,pakar');

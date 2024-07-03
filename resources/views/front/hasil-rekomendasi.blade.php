@@ -34,7 +34,7 @@
                                     <div class="card mb-3">
                                         <div class="card-body" style="border: 1px solid #ddd; padding: 20px; border-radius: 5px; text-align:left;">
                                             <h5 class="card-title">{{ $alternative['nama_alternatif'] }}</h5>
-                                            <p class="card-text">Bobot: {{ round($alternative['weight'], 3) }}</p>
+                                            <p class="card-text">{{ $alternative['description'] }}</p>
                                         </div>
                                     </div>
                                     @endforeach

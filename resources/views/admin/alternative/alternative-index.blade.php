@@ -48,6 +48,9 @@
                                             <td>{{$alternatifItem->nama_alternatif}}</td>
                                             <td name="bstable-actions">
                                                 <div class="btn-list">
+                                                    <a id="bEdit" href="{{route('alternative-show',[$alternatifItem->id])}}" class="btn btn-sm btn-warning">
+                                                        <span class="fe fe-info"> </span>
+                                                    </a>
                                                     <a id="bEdit" href="{{route('alternative-edit',[$alternatifItem->id])}}" class="btn btn-sm btn-primary">
                                                         <span class="fe fe-edit"> </span>
                                                     </a>

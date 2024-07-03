@@ -41,6 +41,9 @@ class AlternativeController extends Controller
 
         $saveData = [
             'nama_alternatif' => $request->alternative_name,
+            'description' => $request->description,
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
 
         // Simpan data pengguna ke dalam tabel
@@ -55,7 +58,11 @@ class AlternativeController extends Controller
      */
     public function show(string $id)
     {
+        $data_alternative = Alternatif::where('id', $id)->get();
+        $data['data_alternative'] = $data_alternative;
 
+        $data['tittle'] = 'Data Alternatif';
+        return view('admin.alternative.alternative-show', $data);
     }
 
     /**
@@ -66,7 +73,7 @@ class AlternativeController extends Controller
         $data_alternative = Alternatif::where('id', $id)->get();
         $data['data_alternative'] = $data_alternative;
 
-        $data['tittle'] = 'Data User';
+        $data['tittle'] = 'Data Alternatif';
         return view('admin.alternative.alternative-edit', $data);
     }
 
@@ -78,6 +85,7 @@ class AlternativeController extends Controller
         // Validasi data yang masuk
         $request->validate([
             'alternative_name' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
         ]);
 
         // Cari alternatif berdasarkan ID
@@ -85,6 +93,8 @@ class AlternativeController extends Controller
 
         // Perbarui data alternatif
         $alternative->nama_alternatif = $request->alternative_name;
+        $alternative->description = $request->description;
+        $alternative->updated_at = now();
 
         // Simpan perubahan
         $alternative->save();

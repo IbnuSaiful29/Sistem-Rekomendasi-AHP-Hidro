@@ -403,6 +403,7 @@ class CekRekomendasiController extends Controller
             $rankedAlternatives[$idAlternatif] = [
                 'id' => $idAlternatif,
                 'nama_alternatif' => $data_alternatif->nama_alternatif,
+                'description' => $data_alternatif->description,
                 'weight' => $weight,
             ];
         }

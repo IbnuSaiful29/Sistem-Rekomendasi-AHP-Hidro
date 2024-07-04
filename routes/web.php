@@ -13,6 +13,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HistoriCekPenangananController;
 use App\Http\Controllers\VillageController;
+use App\Http\Controllers\ErrorHandlingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -113,3 +114,12 @@ Route::group(['prefix' => 'admin'], function(){
     Route::delete('/village/destroy/{id}', [VillageController::class, 'destroy'])->name('village-destroy')->middleware('auth')->middleware('multirole:superadmin,pakar');
 
 });
+
+//error handling
+//============================================================================================================================================
+// Route::get('/400', [ErrorHandlingController::class, 'error_400']);
+Route::get('/401', [ErrorHandlingController::class, 'error_401']);
+Route::get('/403', [ErrorHandlingController::class, 'error_403']);
+Route::get('/404', [ErrorHandlingController::class, 'error_404']);
+Route::get('/500', [ErrorHandlingController::class, 'error_500']);
+Route::get('/503', [ErrorHandlingController::class, 'error_503']);

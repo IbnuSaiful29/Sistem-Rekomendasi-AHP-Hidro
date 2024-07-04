@@ -36,7 +36,7 @@ class RatioIndexSeeder extends Seeder
         foreach ($ratioIndices as $index) {
             DB::table('ratio_index')->insert([
                 'matrix' => $index['matrix'],
-                'nilai-ratio' => $index['nilai_ratio'],
+                'nilai_ratio' => $index['nilai_ratio'],
             ]);
         }
     }

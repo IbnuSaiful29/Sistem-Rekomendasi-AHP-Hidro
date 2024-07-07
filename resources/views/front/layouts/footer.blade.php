@@ -70,7 +70,7 @@
         <div class="row justify-content-center">
             <div class="col-11 col-sm-9 col-lg-6 text-center">
                 <a href="{{ route('home') }}">
-                    <img src="img/demos/restaurant/logo-footer.png" class="img-fluid mb-3" alt="Logo Footer">
+                    <img src="img/logo-white-text.png" class="img-fluid mb-3" alt="Logo Footer">
                 </a>
                 <p class="text-color-grey text-3-5 px-4 mb-5">Aplikasi ini dirancang untuk memberikan rekomendasi penanganan terbaik dalam situasi bencana banjir.</p>
             </div>

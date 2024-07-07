@@ -104,6 +104,7 @@ class CriteriaController extends Controller
         $id_criteria = $criteria->id;
         $option_name = $request->option_name;
         $option_value = $request->option;
+        CriteriaOption::where('id_criteria', $id_criteria)->delete();
         foreach ($option_name as $index => $item_name) {
                 $save_data = [
                     'id_criteria' => $id_criteria,

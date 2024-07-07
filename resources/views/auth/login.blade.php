@@ -15,7 +15,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/brand/favicon.ico" />
 
     <!-- TITLE -->
-    <title>Sash – Bootstrap 5 Admin & Dashboard Template</title>
+    <title>Login | Simbabanyu</title>
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -104,9 +104,9 @@
                                                 <div class="container-login100-form-btn">
                                                     <button type="submit" class="login100-form-btn btn-primary">Login</button>
                                                 </div>
-                                            <div class="text-end pt-4">
+                                            {{-- <div class="text-end pt-4">
                                                 <p class="mb-0"><a href="forgot-password.html" class="text-primary ms-1">Forgot Password?</a></p>
-                                            </div>
+                                            </div> --}}
                                             {{-- <div class="text-center pt-3">
                                                 <p class="text-dark mb-0">Not a member?<a href="register.html" class="text-primary ms-1">Sign UP</a></p>
                                             </div> --}}

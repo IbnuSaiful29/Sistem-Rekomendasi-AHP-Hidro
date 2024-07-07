@@ -24,7 +24,7 @@
                     <div class="header-row">
                         <div class="header-logo">
                             <a href="demo-restaurant.html">
-                                <img alt="Porto" width="123" height="48" src="img/demos/restaurant/logo.png">
+                                <img alt="Porto" width="100%" height="60" src="img/logo-bg-transparant-scale.png">
                             </a>
                         </div>
                     </div>

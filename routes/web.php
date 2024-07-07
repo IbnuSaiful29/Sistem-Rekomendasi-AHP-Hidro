@@ -55,6 +55,9 @@ Route::post('/sign-in', [LoginController::class ,'loginAjax'])->name('loginAjax'
 
 Route::group(['prefix' => 'admin'], function(){
 
+    Route::get('/contact', [ContactController::class ,'show'])->name('contact-show')->middleware('auth')->middleware('multirole:superadmin');;
+    Route::get('/contact/detail/{id}', [ContactController::class ,'detail'])->name('contact-detail')->middleware('auth')->middleware('multirole:superadmin');;
+
     Route::post('/logout', [LoginController::class ,'logout'])->name('destroy');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth')->middleware('multirole:superadmin,SEO,pakar');
 

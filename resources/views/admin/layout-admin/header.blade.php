@@ -3,9 +3,9 @@
         <div class="d-flex">
             <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar" href="javascript:void(0)"></a>
             <!-- sidebar-toggle-->
-            <a class="logo-horizontal " href="index.html">
-                <img src="assets/images/brand/logo.png" class="header-brand-img desktop-logo" alt="logo">
-                <img src="assets/images/brand/logo-3.png" class="header-brand-img light-logo1"
+            <a class="logo-horizontal " href="{{route('home')}}">
+                <img src="assets/images/logo-bg-transparant-scale.png" class="header-brand-img desktop-logo" alt="logo">
+                <img src="assets/images/logo-bg-transparant-scale.png" class="header-brand-img light-logo1"
                     alt="logo">
             </a>
             <!-- LOGO -->

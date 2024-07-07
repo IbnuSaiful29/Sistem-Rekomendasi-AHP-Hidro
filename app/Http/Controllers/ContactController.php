@@ -31,4 +31,22 @@ class ContactController extends Controller
 
         return redirect()->route('contact')->with('success', 'Thank you for contacting us! We will get back to you soon.');
     }
+
+    public function show(){
+
+        $data['data_contact'] = Contact::all();
+
+        $data['tittle'] = 'Pesan dan Saran';
+        return view('admin.contact.contact-index', $data);
+    }
+
+    public function detail($id){
+
+        $data['data_contact'] = Contact::where('id',$id)->first();
+
+        // dd($data['data_contact'] = Contact::where('id',$id)->first());
+
+        $data['tittle'] = 'Pesan dan Saran';
+        return view('admin.contact.contact-detail', $data);
+    }
 }

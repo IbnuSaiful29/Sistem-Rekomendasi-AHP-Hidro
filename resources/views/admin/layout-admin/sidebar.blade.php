@@ -2,12 +2,12 @@
     <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
     <div class="app-sidebar">
         <div class="side-header">
-            <a class="header-brand1" href="index.html">
-                <img src="assets/images/brand/logo.png" class="header-brand-img desktop-logo" alt="logo">
-                <img src="assets/images/brand/logo-1.png" class="header-brand-img toggle-logo"
+            <a class="header-brand1" href="{{route('home')}}">
+                <img src="assets/images/logo-white-text-scale.png" class="header-brand-img desktop-logo" height="50%" alt="logo">
+                <img src="assets/images/logo-1-bg-transparan.png" class="header-brand-img toggle-logo"
                     alt="logo">
-                <img src="assets/images/brand/logo-2.png" class="header-brand-img light-logo" alt="logo">
-                <img src="assets/images/brand/logo-3.png" class="header-brand-img light-logo1"
+                <img src="assets/images/logo-1-bg-transparan.png" class="header-brand-img light-logo" alt="logo">
+                <img src="assets/images/logo-bg-transparant-scale.png" class="header-brand-img light-logo1"
                     alt="logo">
             </a>
             <!-- LOGO -->
@@ -29,8 +29,13 @@
                     </li>
                     <li>
                         <a class="side-menu__item {{ $tittle === 'Data Criteria' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('historiCekPenanganan')}}"><i
-                                class="side-menu__icon fe fe-user"></i><span
+                                class="side-menu__icon fe fe-list"></i><span
                                 class="side-menu__label">Histori Cek Rekomendasi</span></a>
+                    </li>
+                    <li>
+                        <a class="side-menu__item {{ $tittle === 'Pesan dan Saran' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('contact-show')}}"><i
+                                class="side-menu__icon fe fe-mail"></i><span
+                                class="side-menu__label">Pesan</span></a>
                     </li>
                     <li class="sub-category">
                         <h3>Data Management</h3>
@@ -52,7 +57,7 @@
                     </li>
                     <li>
                         <a class="side-menu__item {{ $tittle === 'Data Desa' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('village')}}"><i
-                                class="side-menu__icon fe fe-user"></i><span
+                                class="side-menu__icon fa fa-codepen"></i><span
                                 class="side-menu__label">Data Desa</span></a>
                     </li>
                     {{-- <li class="sub-category">

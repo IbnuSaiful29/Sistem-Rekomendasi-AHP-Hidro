@@ -17,7 +17,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/brand/favicon.ico" />
 
     <!-- TITLE -->
-    <title>{{ $tittle }}</title>
+    <title>{{ $tittle }} | Simbabanyu</title>
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />

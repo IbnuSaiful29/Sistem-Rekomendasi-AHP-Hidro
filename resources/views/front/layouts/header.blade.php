@@ -23,8 +23,8 @@
                 <div class="header-column">
                     <div class="header-row">
                         <div class="header-logo">
-                            <a href="demo-restaurant.html">
-                                <img alt="Porto" width="100%" height="60" src="img/logo-bg-transparant-scale.png">
+                            <a href="{{route('home')}}">
+                                <img alt="Porto" src="img/logo-bg-transparant-scale.png">
                             </a>
                         </div>
                     </div>

@@ -50,16 +50,22 @@
             <div class="">
 
                 <!-- CONTAINER OPEN -->
-                <div class="col col-login mx-auto mt-7">
+                {{-- <div class="col col-login mx-auto mt-7">
                     <div class="text-center">
-                        <img src="assets/images/brand/logo-white.png" class="header-brand-img" alt="">
+                        <img src="assets/images/logo-bg-transparant-scale.png" class="header-brand-img" alt="">
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="container-login100">
                     <div class="wrap-login100 p-6">
                         <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
                             @csrf
+                            <div class="col col-login">
+                                <div class="login100-form-title" style="margin:-9px;">
+                                    <img src="assets/images/logo-bg-transparant-scale.png" width="150" alt="">
+                                </div>
+                            </div>
+                            <br>
                             <span class="login100-form-title pb-5">
                                 Login
                             </span>

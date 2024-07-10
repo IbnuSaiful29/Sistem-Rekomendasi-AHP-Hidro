@@ -41,11 +41,11 @@
 
 <body class="app sidebar-mini ltr light-mode">
 
-    <!-- GLOBAL-LOADER -->
+    {{-- <!-- GLOBAL-LOADER -->
     <div id="global-loader">
         <img src="assets/images/loader.svg" class="loader-img" alt="Loader">
     </div>
-    <!-- /GLOBAL-LOADER -->
+    <!-- /GLOBAL-LOADER --> --}}
 
     <!-- PAGE -->
     <div class="page">
@@ -86,12 +86,12 @@
     <!-- Sticky js -->
     <script src="assets/js/sticky.js"></script>
 
-    <!-- CHART-CIRCLE JS-->
+    {{-- <!-- CHART-CIRCLE JS-->
     <script src="assets/js/circle-progress.min.js"></script>
 
     <!-- PIETY CHART JS-->
     <script src="assets/plugins/peitychart/jquery.peity.min.js"></script>
-    <script src="assets/plugins/peitychart/peitychart.init.js"></script>
+    <script src="assets/plugins/peitychart/peitychart.init.js"></script> --}}
 
     <!-- SIDEBAR JS -->
     <script src="assets/plugins/sidebar/sidebar.js"></script>
@@ -100,16 +100,6 @@
     <script src="assets/plugins/p-scroll/perfect-scrollbar.js"></script>
     <script src="assets/plugins/p-scroll/pscroll.js"></script>
     <script src="assets/plugins/p-scroll/pscroll-1.js"></script>
-
-        <!-- INTERNAL leaflet js -->
-        <script src="assets/plugins/leaflet/leaflet.js"></script>
-        <script src="assets/js/map-leafleft.js"></script>
-
-
-    <!-- INTERNAL CHARTJS CHART JS-->
-    <script src="assets/plugins/chart/Chart.bundle.js"></script>
-    <script src="assets/plugins/chart/rounded-barchart.js"></script>
-    <script src="assets/plugins/chart/utils.js"></script>
 
     <!-- INTERNAL Data tables js-->
     <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>

@@ -11,9 +11,8 @@
     <meta name="author" content="Spruko Technologies Private Limited">
     <meta name="keywords" content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit.">
 
-    <!-- FAVICON -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/brand/favicon.ico" />
-
+   <!-- FAVICON -->
+   <link rel="shortcut icon" type="image/x-icon" href="assets/images/logo-1-bg-transparan.png" />
     <!-- TITLE -->
     <title>Login | Simbabanyu</title>
 
@@ -22,7 +21,7 @@
 
     <!-- STYLE CSS -->
     <link href="assets/css/style.css" rel="stylesheet" />
-    <link href="assets/css/dark-style.css" rel="stylesheet" />
+    {{-- <link href="assets/css/dark-style.css" rel="stylesheet" /> --}}
     <link href="assets/css/transparent-style.css" rel="stylesheet">
     <link href="assets/css/skin-modes.css" rel="stylesheet" />
 
@@ -39,23 +38,9 @@
     <!-- BACKGROUND-IMAGE -->
     <div class="login-img">
 
-        <!-- GLOABAL LOADER -->
-        <div id="global-loader">
-            <img src="assets/images/loader.svg" class="loader-img" alt="Loader">
-        </div>
-        <!-- /GLOABAL LOADER -->
-
         <!-- PAGE -->
         <div class="page">
             <div class="">
-
-                <!-- CONTAINER OPEN -->
-                {{-- <div class="col col-login mx-auto mt-7">
-                    <div class="text-center">
-                        <img src="assets/images/logo-bg-transparant-scale.png" class="header-brand-img" alt="">
-                    </div>
-                </div> --}}
-
                 <div class="container-login100">
                     <div class="wrap-login100 p-6">
                         <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
@@ -70,15 +55,6 @@
                                 Login
                             </span>
                             <div class="panel panel-primary">
-                                {{-- <div class="tab-menu-heading">
-                                    <div class="tabs-menu1">
-                                        <!-- Tabs -->
-                                        <ul class="nav panel-tabs">
-                                            <li class="mx-0"><a href="#tab5" class="active" data-bs-toggle="tab">Email</a></li>
-                                            <li class="mx-0"><a href="#tab6" data-bs-toggle="tab">Mobile</a></li>
-                                        </ul>
-                                    </div>
-                                </div> --}}
                                 <div class="panel-body tabs-menu-body p-0 pt-5">
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="tab5">
@@ -96,44 +72,11 @@
                                                     </a>
                                                     <input id="password" type="password" placeholder="Password" class="input100 border-start-0 form-control ms-0 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                                 </div>
-                                                {{-- <div class="row mb-3">
-                                                    <div class="col-md-6">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                                                            <label class="form-check-label" for="remember">
-                                                                {{ __('Remember Me') }}
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div> --}}
                                                 <div class="container-login100-form-btn">
                                                     <button type="submit" class="login100-form-btn btn-primary">Login</button>
                                                 </div>
-                                            {{-- <div class="text-end pt-4">
-                                                <p class="mb-0"><a href="forgot-password.html" class="text-primary ms-1">Forgot Password?</a></p>
-                                            </div> --}}
-                                            {{-- <div class="text-center pt-3">
-                                                <p class="text-dark mb-0">Not a member?<a href="register.html" class="text-primary ms-1">Sign UP</a></p>
-                                            </div> --}}
-                                            {{-- <label class="login-social-icon"><span>Login with Social</span></label>
-                                            <div class="d-flex justify-content-center">
-                                                <a href="javascript:void(0)">
-                                                    <div class="social-login me-4 text-center">
-                                                        <i class="fa fa-google"></i>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0)">
-                                                    <div class="social-login me-4 text-center">
-                                                        <i class="fa fa-facebook"></i>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0)">
-                                                    <div class="social-login text-center">
-                                                        <i class="fa fa-twitter"></i>
-                                                    </div>
-                                                </a>
-                                            </div> --}}
+
                                         </div>
                                         <div class="tab-pane" id="tab6">
                                             <div id="mobile-num" class="wrap-input100 validate-input input-group mb-4">

@@ -150,7 +150,7 @@ class CekRekomendasiController extends Controller
 
         DB::commit();
 
-        $data['tittle'] = 'Hasil Rekomendasi';
+        $data['tittle'] = 'Cek Rekomendasi';
         return view('front.hasil-rekomendasi', $data);
     }
 

@@ -81,7 +81,7 @@
             <!-- ROW-1 END -->
 
             <!-- ROW-2 -->
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
@@ -101,7 +101,7 @@
                     </div>
                 </div>
                 <!-- COL END -->
-            </div>
+            </div> --}}
             <!-- ROW-2 END -->
         </div>
         <!-- CONTAINER END -->

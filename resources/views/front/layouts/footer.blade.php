@@ -120,7 +120,7 @@
         <div class="container">
             <div class="row">
                 <div class="col text-center">
-                    <p class="text-color-grey text-3-5">Sistem Rekomendasi Penanganan Bencana Banjir © 2024. All Rights Reserved.</p>
+                    <p class="text-color-grey text-3-5">Copyright © 2024 <a href="javascript:void(0)">Simbabanyu</a>. All rights reserved.</p>
                 </div>
             </div>
         </div>

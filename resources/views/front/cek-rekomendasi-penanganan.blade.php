@@ -59,8 +59,6 @@
                                             <button class="btn btn-primary" type="submit">Cek Rekomendasi</button>
                                             <button type="button" class="btn btn-info ml-2" data-bs-toggle="modal"
                                             data-bs-target="#petunjukModal">Petunjuk</button>
-                                            {{-- <a href="{{route('user')}}" class="btn btn-secondary">Cancel</a> --}}
-                                            {{-- <button >Cancel</button> --}}
                                         </div>
                                     </div>
 

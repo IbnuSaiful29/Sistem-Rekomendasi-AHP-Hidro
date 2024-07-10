@@ -104,27 +104,6 @@
     <!-- SweetAlert JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    {{-- <script>
-    function confirmDelete(id) {
-        Swal.fire({
-            title: 'Anda yakin?',
-            text: "Data ini akan dihapus secara permanen!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, hapus!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                var form = document.getElementById('delete-form');
-                var action = "{{ route('village-destroy', ':id') }}";
-                action = action.replace(':id', id);
-                form.action = action;
-                form.submit();
-            }
-        })
-    }
-    </script> --}}
     <script>
         function confirmDelete(id) {
             Swal.fire({

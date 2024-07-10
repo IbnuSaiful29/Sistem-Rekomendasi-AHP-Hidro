@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Sash – Bootstrap 5  Admin & Dashboard Template">
+    <meta name="description" content="Simbabanyu - Sistem Rekomendasi Pencegahan Bencana Banjir">
     <meta name="author" content="Spruko Technologies Private Limited">
     <meta name="keywords"
         content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit.">
@@ -40,12 +40,6 @@
 </head>
 
 <body class="app sidebar-mini ltr light-mode">
-
-    {{-- <!-- GLOBAL-LOADER -->
-    <div id="global-loader">
-        <img src="assets/images/loader.svg" class="loader-img" alt="Loader">
-    </div>
-    <!-- /GLOBAL-LOADER --> --}}
 
     <!-- PAGE -->
     <div class="page">
@@ -86,13 +80,6 @@
     <!-- Sticky js -->
     <script src="assets/js/sticky.js"></script>
 
-    {{-- <!-- CHART-CIRCLE JS-->
-    <script src="assets/js/circle-progress.min.js"></script>
-
-    <!-- PIETY CHART JS-->
-    <script src="assets/plugins/peitychart/jquery.peity.min.js"></script>
-    <script src="assets/plugins/peitychart/peitychart.init.js"></script> --}}
-
     <!-- SIDEBAR JS -->
     <script src="assets/plugins/sidebar/sidebar.js"></script>
 
@@ -115,17 +102,6 @@
     <script src="assets/plugins/datatable/dataTables.responsive.min.js"></script>
     <script src="assets/plugins/datatable/responsive.bootstrap5.min.js"></script>
     <script src="assets/js/table-data.js"></script>
-
-    <!-- INTERNAL APEXCHART JS -->
-    <script src="assets/js/apexcharts.js"></script>
-    <script src="assets/plugins/apexchart/irregular-data-series.js"></script>
-
-    <!-- C3 CHART JS -->
-    <script src="assets/plugins/charts-c3/d3.v5.min.js"></script>
-    <script src="assets/plugins/charts-c3/c3-chart.js"></script>
-
-    <!-- CHART-DONUT JS -->
-    <script src="assets/js/charts.js"></script>
 
     <!-- INTERNAL Flot JS -->
     <script src="assets/plugins/flot/jquery.flot.js"></script>
@@ -152,6 +128,7 @@
     <!-- INTERNAL SELECT2 JS -->
     <script src="assets/plugins/select2/select2.full.min.js"></script>
     <script src="assets/js/select2.js"></script>
+
 
     @yield('js')
 

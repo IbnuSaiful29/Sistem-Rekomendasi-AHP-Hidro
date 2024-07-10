@@ -96,34 +96,3 @@
     </div>
 </div>
 @endsection
-@section('js')
-    {{-- <script>
-        $(document).ready(function() {
-            $('.delete-button').click(function() {
-                var criterionId = $(this).data('id');
-                var row = $('#criterion-' + criterionId);
-
-                if (confirm('Are you sure you want to delete this criteria?')) {
-                    $.ajax({
-                        url: '{{route('criteria-delete')}}' + criterionId,
-                        type: 'DELETE',
-                        data: {
-                            _token: '{{ csrf_token() }}'
-                        },
-                        success: function(response) {
-                            if (response.success) {
-                                row.remove();
-                                alert(response.success);
-                            } else {
-                                alert(response.error);
-                            }
-                        },
-                        error: function(xhr) {
-                            alert('An error occurred while deleting the criteria.');
-                        }
-                    });
-                }
-            });
-        });
-    </script> --}}
-@endsection

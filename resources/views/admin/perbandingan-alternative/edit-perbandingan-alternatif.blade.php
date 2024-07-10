@@ -136,50 +136,7 @@
             $('button[type=submit]', $(this).parents('form')).removeAttr('clicked');
             $(this).attr('clicked', 'true');
         });
-        // $('#pairwiseComparisonForm').submit(function(e) {
-        //     e.preventDefault(); // Prevent the default form submission
 
-        //     var actionValue = $('button[type=submit][clicked=true]').val(); // Get the value of the button that was clicked
-        //     var formData = $(this).serialize() + '&action=' + actionValue; // Serialize the form data and append the action value
-
-        //     $.ajax({
-        //         url: "{{route('pairwiseComparisonAlternativeEditSave', [$alternative->id])}}", // Endpoint URL
-        //         type: "POST",
-        //         data: formData, // Form data
-        //         success: function (response) {
-        //             if (response.message === 'Data berhasil disimpan') {
-        //                 if (actionValue === 'back') {
-        //                     window.location.href = "{{ route('pairwiseComparisonCriteria') }}"; // Redirect for "Save & Return" button
-        //                 } else {
-        //                     // Additional actions for "Save" button, if any
-        //                     swal.fire({
-        //                         title: 'Berhasil!',
-        //                         text: 'Data berhasil disimpan!',
-        //                         icon: 'success',
-        //                         confirmButtonText: 'OK'
-        //                     });
-        //                 }
-        //             } else {
-        //                 swal.fire({
-        //                     title: 'Error!',
-        //                     text: 'Terjadi kesalahan saat menyimpan data. Silakan coba lagi.',
-        //                     icon: 'error',
-        //                     confirmButtonText: 'OK'
-        //                 });
-        //             }
-        //         },
-        //         error: function (xhr, status, error) {
-        //             console.error(xhr.responseText);
-        //             alert('Terjadi kesalahan saat menyimpan data. Silakan coba lagi.');
-        //         }
-        //     });
-        // });
-
-        // // Capture the clicked button's value
-        // $('form button[type=submit]').click(function() {
-        //     $('button[type=submit]', $(this).parents('form')).removeAttr('clicked');
-        //     $(this).attr('clicked', 'true');
-        // });
     });
 
 </script>

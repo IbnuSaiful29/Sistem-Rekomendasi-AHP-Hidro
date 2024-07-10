@@ -66,28 +66,7 @@
                                         @endforeach
                                     </tr>
                                 </table>
-                                {{-- <table class="table table-bordered">
-                                    <tr>
-                                        <td></td>
-                                        @foreach ($criteria as $criterion)
-                                            <td>{{ $criterion->nama_kriteria }}</td>
-                                        @endforeach
-                                    </tr>
-                                    @foreach ($criteria as $rowCriterion)
-                                        <tr>
-                                            <td>{{ $rowCriterion->nama_kriteria }}</td>
-                                            @foreach ($criteria as $colCriterion)
-                                                @if ($rowCriterion->id == $colCriterion->id)
-                                                    <td><input type="number" class="form-control" id="matrix_{{ $rowCriterion->id }}_{{ $colCriterion->id }}" name="matrix[{{ $rowCriterion->id }}][{{ $colCriterion->id }}]" value="1" readonly></td>
-                                                @elseif ($rowCriterion->id > $colCriterion->id)
-                                                    <td><input type="number" class="form-control" id="matrix_{{ $rowCriterion->id }}_{{ $colCriterion->id }}" name="matrix[{{ $rowCriterion->id }}][{{ $colCriterion->id }}]" oninput="updateMatrix({{ $rowCriterion->id }}, {{ $colCriterion->id }})" min="0" max="0" value="0"></td>
-                                                @else
-                                                    <td><input type="number" class="form-control" id="matrix_{{ $rowCriterion->id }}_{{ $colCriterion->id }}" name="matrix[{{ $rowCriterion->id }}][{{ $colCriterion->id }}]" oninput="updateMatrix({{ $rowCriterion->id }}, {{ $colCriterion->id }})" min="1" max="9" value="0"></td>
-                                                @endif
-                                            @endforeach
-                                        </tr>
-                                    @endforeach
-                                </table> --}}
+
 
 
                             </div>

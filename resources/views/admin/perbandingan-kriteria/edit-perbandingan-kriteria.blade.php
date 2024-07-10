@@ -93,16 +93,6 @@
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    // function updateMatrix(row, col) {
-    //     var pembilang = $('#matrix_' + row + '_' + row).val();
-    //     var value = $('#matrix_' + row + '_' + col).val();
-    //     if (value == 0) {
-    //         $('#matrix_' + col + '_' + row).val(0);
-    //     }else{
-    //         $('#matrix_' + col + '_' + row).val(pembilang/value);
-    //     }
-    // }
-
     function updateMatrix(row, col) {
         var value = parseFloat($('#matrix_' + row + '_' + col).val());
         var pembilang = parseFloat($('#matrix_' + row + '_' + row).val());
@@ -201,38 +191,6 @@
             });
         });
     });
-
-
-    // $(document).ready(function() {
-    //     $('#pairwiseComparisonForm').submit(function(e) {
-    //         e.preventDefault(); // Prevent the default form submission
-
-    //         var formData = $(this).serialize(); // Serialize the form data
-
-    //         $.ajax({
-    //             url: "{{route('pairwiseComparisonCriteriaEditSave')}}", // Endpoint URL
-    //             type: "POST",
-    //             data: formData, // Form data
-    //             success: function (response) {
-    //                 if (response.message === 'Data berhasil disimpan') {
-    //                     if ($('button[id="back"]').length > 0) {
-    //                         window.location.href = "{{ route('pairwiseComparisonCriteria') }}"; // Redirect for "Save & Return" button
-    //                     } else {
-    //                         // Additional actions for "Save" button, if any
-    //                         alert('Data berhasil disimpan!');
-    //                     }
-    //                 } else {
-    //                     alert('Terjadi kesalahan saat menyimpan data. Silakan coba lagi.');
-    //                 }
-    //             },
-    //             error: function (xhr, status, error) {
-    //                 console.error(xhr.responseText);
-    //                 alert('Terjadi kesalahan saat menyimpan data. Silakan coba lagi.');
-    //             }
-    //         });
-    //     });
-    // });
-
 
 </script>
 @endsection

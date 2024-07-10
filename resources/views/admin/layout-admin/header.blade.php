@@ -8,11 +8,6 @@
                 <img src="assets/images/logo-bg-transparant-scale.png" class="header-brand-img light-logo1"
                     alt="logo">
             </a>
-            <!-- LOGO -->
-            {{-- <div class="main-header-center ms-3 d-none d-lg-block">
-                <input class="form-control" placeholder="Search for results..." type="search">
-                <button class="btn px-0 pt-2"><i class="fe fe-search" aria-hidden="true"></i></button>
-            </div> --}}
             <div class="d-flex order-lg-2 ms-auto header-right-icons">
                 <div class="dropdown d-none">
                     <a href="javascript:void(0)" class="nav-link icon" data-bs-toggle="dropdown">

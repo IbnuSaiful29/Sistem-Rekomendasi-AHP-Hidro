@@ -169,38 +169,6 @@ class AlternativeController extends Controller
         $data['tittle'] = 'Perbandingan Alternative';
         return view('admin.perbandingan-alternative.edit-perbandingan-alternatif', $data);
     }
-    // public function EditPairwiseComparison($id)
-    // {
-    //     $data_criteria = Criteria::all();
-    //     $data_pairwise = PairwiseAlternative::all();
-    //     $data_alternative = Alternatif::all();
-    //     $data['alternative'] = $data_alternative;
-    //     $data['criteria'] = $data_criteria;
-    //     $data['pairwise'] = $data_pairwise;
-    //     // $data['criteria'] = ['suhu', 'hidrologi', 'infrastruktur'];
-    //     $data['tittle'] = 'Perbandingan Alternative';
-    //     return view('admin.perbandingan-alternative.edit-perbandingan-alternatif', $data);
-    // }
-
-    // public function editSavePairwiseComparison(Request $request, $id){
-
-    //     $matrix = $request->input('matrix');
-    //     foreach ($matrix as $rowCriterionId => $colCriteria) {
-    //         foreach ($colCriteria as $colCriterionId => $value) {
-    //             PairwiseAlternative::updateOrCreate(
-    //                 [
-    //                     'alternative_id' => $rowCriterionId,
-    //                     'criteria_id' => $colCriterionId,
-    //                 ],
-    //                 [
-    //                     'value' => $value,
-    //                 ]
-    //             );
-    //         }
-    //     }
-
-    //     return response()->json(['message' => 'Data berhasil disimpan'], 200);
-    // }
 
     public function editSavePairwiseComparison(Request $request, $id)
     {

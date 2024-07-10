@@ -39,6 +39,7 @@
                                             <th class="wd-15p border-bottom-0">No</th>
                                             <th class="wd-25p border-bottom-0">Nama</th>
                                             <th class="wd-25p border-bottom-0">Email</th>
+                                            <th class="wd-25p border-bottom-0">Tanggal</th>
                                             <th class="wd-25p border-bottom-0">Action</th>
                                         </tr>
                                     </thead>
@@ -48,6 +49,7 @@
                                             <td>{{$loop->iteration}}</td>
                                             <td>{{$contactItem->name}}</td>
                                             <td>{{$contactItem->email}}</td>
+                                            <td>{{ \Carbon\Carbon::parse($contactItem->created_at)->translatedFormat('d F Y') }}</td>
                                             <td name="bstable-actions">
                                                 <div class="btn-list">
                                                     <a href="{{route('contact-detail', [$contactItem->id] )}}" id="bDel" class="btn  btn-sm btn-warning">

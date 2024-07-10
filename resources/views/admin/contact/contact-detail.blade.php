@@ -39,6 +39,12 @@
                                         <p>{{$data_contact->email}}</p>
                                     </div>
                                 </div>
+                                <div class=" row mb-4">
+                                    <label for="inputName" class="col-md-3 form-label">Tanggal</label>
+                                    <div class="col-md-9">
+                                        <p>{{ \Carbon\Carbon::parse($data_contact->created_at)->translatedFormat('d F Y') }}</p>
+                                    </div>
+                                </div>
 
                                 <div class=" row mb-4">
                                     <label for="inputName" class="col-md-3 form-label">Pesan</label>

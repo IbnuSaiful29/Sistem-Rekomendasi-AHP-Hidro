@@ -36,6 +36,7 @@
                                             <th class="wd-15p border-bottom-0">No</th>
                                             <th class="wd-25p border-bottom-0">Nama Kecamatan</th>
                                             <th class="wd-25p border-bottom-0">Nama Desa</th>
+                                            <th class="wd-25p border-bottom-0">Tanggal</th>
                                             <th class="wd-25p border-bottom-0">Action</th>
                                         </tr>
                                     </thead>
@@ -45,6 +46,9 @@
                                             <td>{{$loop->iteration}}</td>
                                             <td>{{$historiItem->village->nama_kecamatan}}</td>
                                             <td>{{$historiItem->village->nama_desa}}</td>
+                                            {{-- <td>{{$historiItem->village->created_at}}</td> --}}
+                                            <td>{{ \Carbon\Carbon::parse($historiItem->created_at)->translatedFormat('d F Y') }}</td>
+
                                             <td name="bstable-actions">
                                                 <div class="btn-list">
                                                     <a id="bEdit" href="{{route('historiCekPenangananShow',[$historiItem->id])}}" class="btn btn-sm btn-warning">

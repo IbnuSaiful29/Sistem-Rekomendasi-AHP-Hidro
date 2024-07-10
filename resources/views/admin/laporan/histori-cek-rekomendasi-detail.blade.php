@@ -46,6 +46,10 @@
                                         <th style="width:30%">Nama Desa</th>
                                         <td>{{ $data_histori->village->nama_desa }}</td>
                                     </tr>
+                                    <tr>
+                                        <th style="width:30%">Tanggal</th>
+                                        <td>{{ \Carbon\Carbon::parse( $data_histori->village->created_at)->translatedFormat('d F Y') }}</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Session;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Validation\ValidationException;
+
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -45,4 +48,12 @@ class LoginController extends Controller
         Session::flush(); // Menghapus semua data sesi pengguna
         return redirect()->route('login'); // Redirect ke halaman login
     }
+
+     // Tambahkan metode ini
+     protected function sendFailedLoginResponse(Request $request)
+     {
+         throw ValidationException::withMessages([
+             $this->username() => [trans('auth.failed')],
+         ]);
+     }
 }

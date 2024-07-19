@@ -89,12 +89,16 @@ class CekRekomendasiController extends Controller
 
         // dd($normalizedMatrices);
 
+        // dd($comparisonMatrices);
+
         // Hitung bobot
         $weights = $this->calculateWeightsAll($normalizedMatrices);
 
-        $totalWeights = $this->calculateTotalWeights($weights, $weightsCriteria);
 
-        // // Normalisasi bobot total alternatif
+        $totalWeights = $this->calculateTotalWeights($weights, $weightsCriteria);
+        //   dd($totalWeights);
+
+        // Normalisasi bobot total alternatif
         $normalizedTotalWeights = $this->normalizeTotalWeights($totalWeights);
 
         $rankedAlternativesAll = $this->rankAlternativesAll($normalizedTotalWeights);
@@ -282,19 +286,37 @@ class CekRekomendasiController extends Controller
         $distance1 = abs($value1 - $bestValue);
         $distance2 = abs($value2 - $bestValue);
 
-         // Cek jika distance1 adalah nol untuk menghindari pembagian dengan nol
+        // Cek jika distance1 adalah nol untuk menghindari pembagian dengan nol
         if ($distance1 == 0) {
-            if ($distance2 == 0) {
-                // Jika kedua distance1 dan distance2 nol, berarti keduanya sama dengan bestValue
-                return 1; // atau nilai yang logis sesuai konteks Anda
-            } else {
-                // Jika hanya distance1 yang nol, artinya value1 adalah nilai terbaik
-                return PHP_INT_MAX; // atau nilai sangat besar untuk menandakan bahwa value1 adalah terbaik
-            }
+            $distance1 = 1;
         }
 
-        return $distance2 / $distance1;
+        // Cek jika distance2 adalah nol
+        if ($distance2 == 0) {
+            $distance2 = 1;
+        }
+
+        return $distance1 / $distance2;
+
     }
+    // protected function compareValuesWithBestValue($value1, $value2, $bestValue)
+    // {
+    //     $distance1 = abs($value1 - $bestValue);
+    //     $distance2 = abs($value2 - $bestValue);
+
+    //      // Cek jika distance1 adalah nol untuk menghindari pembagian dengan nol
+    //     if ($distance1 == 0) {
+    //         if ($distance2 == 0) {
+    //             // Jika kedua distance1 dan distance2 nol, berarti keduanya sama dengan bestValue
+    //             return 1; // atau nilai yang logis sesuai konteks Anda
+    //         } else {
+    //             // Jika hanya distance1 yang nol, artinya value1 adalah nilai terbaik
+    //             return PHP_INT_MAX; // atau nilai sangat besar untuk menandakan bahwa value1 adalah terbaik
+    //         }
+    //     }
+
+    //     return $distance2 / $distance1;
+    // }
 
 
     public function normalizeAllMatrices($comparisonMatrices)
@@ -313,15 +335,24 @@ class CekRekomendasiController extends Controller
     protected function normalizeMatrix($matrix)
     {
           // Inisialisasi array untuk menyimpan jumlah kolom
-        $sumColumns = [];
+        // $sumColumns = [];
 
-        // Hitung jumlah kolom
-        foreach ($matrix as $row) {
-            foreach ($row as $colId => $value) {
-                if (!isset($sumColumns[$colId])) {
-                    $sumColumns[$colId] = 0;
-                }
-                $sumColumns[$colId] += $value;
+        // // Hitung jumlah kolom
+        // foreach ($matrix as $row) {
+        //     foreach ($row as $colId => $value) {
+        //         if (!isset($sumColumns[$colId])) {
+        //             $sumColumns[$colId] = 0;
+        //         }
+        //         $sumColumns[$colId] += $value;
+        //     }
+        // }
+
+        $sumRows = [];
+
+        foreach ($matrix as $rowId => $row) {
+            $sumRows[$rowId] = 0; // Inisialisasi jumlah untuk baris ini
+            foreach ($row as $value) {
+                $sumRows[$rowId] += $value; // Tambahkan nilai ke jumlah baris
             }
         }
 
@@ -330,16 +361,42 @@ class CekRekomendasiController extends Controller
         foreach ($matrix as $altId => $row) {
             $normalizedRow = [];
             foreach ($row as $colId => $value) {
-                if ($sumColumns[$colId] == 0) {
-                    throw new \Exception('Error pembagian dengan nol: jumlah kolom nol.');
+                if ($sumRows[$altId] == 0) {
+                    throw new \Exception('Error pembagian dengan nol: jumlah baris nol.');
                 }
-                $normalizedRow[$colId] = $value / $sumColumns[$colId];
+                $normalizedRow[$colId] = $value / $sumRows[$altId];
             }
             $normalizedMatrix[$altId] = $normalizedRow;
         }
 
         return $normalizedMatrix;
+
     }
+
+    // public function calculateWeightsAll($normalizedMatrices)
+    // {
+    //     $weights = [];
+
+    //     // Normalisasi setiap matriks
+    //     foreach ($normalizedMatrices as $criterionId => $matrix) {
+    //         // return $matrix;
+    //         $weights[$criterionId] = $this->calculateWeights($matrix);
+    //     }
+
+    //     // dd($normalizedMatrices);
+
+    //     return $weights;
+    // }
+
+    // protected function calculateWeights($normalizedMatrix)
+    // {
+    //     $weights = [];
+    //     // dd($normalizedMatrix);
+    //     foreach ($normalizedMatrix as $alternatifId => $row) {
+    //         $weights[$alternatifId] = array_sum($row) / count($row);
+    //     }
+    //     return $weights;
+    // }
 
     public function calculateWeightsAll($normalizedMatrices)
     {
@@ -359,19 +416,55 @@ class CekRekomendasiController extends Controller
     protected function calculateWeights($normalizedMatrix)
     {
         $weights = [];
-        // dd($normalizedMatrix);
-        foreach ($normalizedMatrix as $alternatifId => $row) {
-            $weights[$alternatifId] = array_sum($row) / count($row);
+        if (empty($normalizedMatrix)) {
+            return $weights;
         }
+
+        $columnSums = [];
+
+        // Iterasi melalui setiap baris dan kolom untuk menghitung jumlah kolom
+        foreach ($normalizedMatrix as $row) {
+            foreach ($row as $columnIndex => $value) {
+                if (!isset($columnSums[$columnIndex])) {
+                    $columnSums[$columnIndex] = 0;
+                }
+                $columnSums[$columnIndex] += $value;
+            }
+        }
+
+        // Hitung bobot untuk setiap kolom
+        foreach ($columnSums as $columnIndex => $sum) {
+            $weights[$columnIndex] = $sum / count($normalizedMatrix);
+        }
+
         return $weights;
     }
 
+
+
+    // protected function calculateTotalWeights($alternativeWeights, $criteriaWeights)
+    // {
+    //     $totalWeights = [];
+
+    //     foreach ($alternativeWeights as $criterionId => $weights) {
+    //         foreach ($weights as $index => $weight) {
+    //             if (!isset($totalWeights[$index])) {
+    //                 $totalWeights[$index] = 0;
+    //             }
+    //             $totalWeights[$index] += $weight * $criteriaWeights[$criterionId];
+    //         }
+    //     }
+
+    //     return $totalWeights;
+    // }
     protected function calculateTotalWeights($alternativeWeights, $criteriaWeights)
     {
         $totalWeights = [];
 
         foreach ($alternativeWeights as $criterionId => $weights) {
+
             foreach ($weights as $index => $weight) {
+                // dd($weight);
                 if (!isset($totalWeights[$index])) {
                     $totalWeights[$index] = 0;
                 }
@@ -379,8 +472,11 @@ class CekRekomendasiController extends Controller
             }
         }
 
+        // dd($totalWeights);
+
         return $totalWeights;
     }
+
 
     protected function normalizeTotalWeights($totalWeights)
     {

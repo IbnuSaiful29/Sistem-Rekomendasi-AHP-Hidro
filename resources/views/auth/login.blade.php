@@ -54,6 +54,11 @@
                             <span class="login100-form-title pb-5">
                                 Login
                             </span>
+                            @if ($errors->has('email'))
+                                <div class="alert alert-danger">
+                                    {{ $errors->first('email') }}
+                                </div>
+                            @endif
                             <div class="panel panel-primary">
                                 <div class="panel-body tabs-menu-body p-0 pt-5">
                                     <div class="tab-content">

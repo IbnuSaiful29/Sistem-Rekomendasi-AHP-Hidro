@@ -30,13 +30,31 @@
                                     <img src="img/flood-illustration.png" width="380" alt="">
                                 </div>
                                 <div class="col-lg-7 ps-lg-3 ps-xl-5">
-                                    @foreach ($rankedAlternativesAll as $alternative)
+                                    {{-- @foreach ($rankedAlternativesAll as $alternative)
                                     <div class="card mb-3">
                                         <div class="card-body" style="border: 1px solid #ddd; padding: 20px; border-radius: 5px; text-align:left;">
                                             <h5 class="card-title">{{ $alternative['nama_alternatif'] }}</h5>
                                             <p class="card-text">{{ $alternative['description'] }}</p>
                                         </div>
                                     </div>
+                                    @endforeach --}}
+                                    @php
+                                        $count = 0;
+                                    @endphp
+                                    @foreach ($rankedAlternativesAll as $alternative)
+                                    @if ($count < 5)
+                                        <div class="card mb-3">
+                                            <div class="card-body" style="border: 1px solid #ddd; padding: 20px; border-radius: 5px; text-align:left;">
+                                                <h5 class="card-title">{{ $alternative['nama_alternatif'] }}</h5>
+                                                <p class="card-text">{{ $alternative['description'] }}</p>
+                                            </div>
+                                        </div>
+                                        @php
+                                            $count++;
+                                        @endphp
+                                    @else
+                                        @break
+                                    @endif
                                     @endforeach
                                 </div>
                             </div>

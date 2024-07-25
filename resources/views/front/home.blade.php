@@ -35,7 +35,7 @@
                 <h2 class="text-color-primary positive-ls-3 text-4 line-height-3 mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">TENTANG KAMI</h2>
                 <h3 class="text-color-dark text-transform-none text-9 line-height-3 font-weight-medium mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">Menggunakan <span class="highlight highlight-primary highlight-bg-opacity highlight-animated" data-appear-animation="highlight-animated-start" data-appear-animation-delay="1200" data-plugin-options="{'flagClassOnly': true}">teknologi</span> untuk memberikan rekomendasi penanganan banjir yang efektif.</h3>
                 <p class="text-3-5 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="700">Sistem Rekomendasi Penanganan Bencana Banjir adalah platform yang dirancang untuk membantu masyarakat dan pemerintah dalam mengambil langkah-langkah yang tepat untuk mengatasi banjir. Dengan menggunakan data terbaru dan algoritma canggih, sistem ini memberikan rekomendasi yang disesuaikan dengan kondisi lokal.</p>
-                <a href="#" class="btn btn-dark font-weight-medium text-3 btn-px-4 py-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="900">Lebih Lanjut Tentang Kami</a>
+                <a href="{{route('about')}}" class="btn btn-dark font-weight-medium text-3 btn-px-4 py-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="900">Lebih Lanjut Tentang Kami</a>
             </div>
         </div>
     </div>

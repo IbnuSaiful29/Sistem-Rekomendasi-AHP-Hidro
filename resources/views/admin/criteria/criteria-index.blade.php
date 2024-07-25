@@ -38,7 +38,7 @@
                                         <tr>
                                             <th class="wd-15p border-bottom-0">No</th>
                                             <th class="wd-25p border-bottom-0">Nama Kriteria</th>
-                                            <th class="wd-25p border-bottom-0">Jenis</th>
+                                            {{-- <th class="wd-25p border-bottom-0">Jenis</th> --}}
                                             <th class="wd-25p border-bottom-0">Action</th>
                                         </tr>
                                     </thead>
@@ -47,7 +47,7 @@
                                         <tr  id="criterion-{{ $criteriaItem->id }}">
                                             <td>{{$loop->iteration}}</td>
                                             <td>{{$criteriaItem->nama_kriteria}}</td>
-                                            <td>{{$criteriaItem->type}}</td>
+                                            {{-- <td>{{$criteriaItem->type}}</td> --}}
                                             <td name="bstable-actions">
                                                 <div class="btn-list">
                                                     {{-- <button id="bEdit" type="button" class="btn btn-sm btn-primary">

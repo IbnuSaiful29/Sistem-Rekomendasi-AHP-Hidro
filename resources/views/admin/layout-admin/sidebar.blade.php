@@ -28,8 +28,8 @@
                                 class="side-menu__label">Dashboard</span></a>
                     </li>
                     <li>
-                        <a class="side-menu__item {{ $tittle === 'Data Criteria' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('historiCekPenanganan')}}"><i
-                                class="side-menu__icon fe fe-list"></i><span
+                        <a class="side-menu__item {{ $tittle === 'Data Histori' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('historiCekPenanganan')}}"><i
+                                class="side-menu__icon fe fe-bar-chart-2"></i><span
                                 class="side-menu__label">Histori Cek Rekomendasi</span></a>
                     </li>
                     <li>
@@ -46,14 +46,16 @@
                                 class="side-menu__label">User</span></a>
                     </li>
                     <li>
-                        <a class="side-menu__item {{ $tittle === 'Data Criteria' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('criteria')}}"><i
-                                class="side-menu__icon fe fe-user"></i><span
-                                class="side-menu__label">Criteria</span></a>
+                        <a class="side-menu__item {{ $tittle === 'Data Criteria' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('criteria')}}">
+                            <i class="side-menu__icon fe fe-list"></i>
+                            <span class="side-menu__label">Criteria</span>
+                        </a>
                     </li>
                     <li>
-                        <a class="side-menu__item {{ $tittle === 'Data Alternative' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('alternative')}}"><i
-                                class="side-menu__icon fe fe-user"></i><span
-                                class="side-menu__label">Alternative</span></a>
+                        <a class="side-menu__item {{ $tittle === 'Data Alternative' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('alternative')}}">
+                            <i class="side-menu__icon fe fe-layers"></i>
+                            <span class="side-menu__label">Alternative</span>
+                        </a>
                     </li>
                     <li>
                         <a class="side-menu__item {{ $tittle === 'Data Desa' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('village')}}"><i
@@ -95,7 +97,12 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="slide">
+                    <li>
+                        <a class="side-menu__item {{ $tittle === 'Perbandingan Alternatif' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('pairwiseComparisonAlternative')}}"><i
+                                class="side-menu__icon fe fe-shuffle"></i><span
+                                class="side-menu__label">Perbandingan Alternatif</span></a>
+                    </li>
+                    {{-- <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i
                                 class="side-menu__icon fe fe-slack"></i><span
                                 class="side-menu__label">Perbandingan Alternatif</span><i
@@ -115,7 +122,7 @@
                             </li>
                             <li><a href="{{route('rangkingCriteriaAlternativeAll')}}" class="slide-item {{ $tittle === 'Rangking Alternatif' ? 'active' : '' }}">Rangking Alternatif</a></li>
                         </ul>
-                    </li>
+                    </li> --}}
                 </ul>
             @endif
             @if (Auth::user()->role == 'pakar')
@@ -129,28 +136,30 @@
                                 class="side-menu__label">Dashboard</span></a>
                     </li>
                     <li>
-                        <a class="side-menu__item {{ $tittle === 'Data Criteria' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('historiCekPenanganan')}}"><i
-                                class="side-menu__icon fe fe-user"></i><span
+                        <a class="side-menu__item {{ $tittle === 'Data Histori' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('historiCekPenanganan')}}"><i
+                                class="side-menu__icon fe fe-bar-chart-2"></i><span
                                 class="side-menu__label">Histori Cek Rekomendasi</span></a>
                     </li>
                     <li class="sub-category">
                         <h3>Data Management</h3>
                     </li>
                     <li>
-                        <a class="side-menu__item {{ $tittle === 'Data Criteria' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('criteria')}}"><i
-                                class="side-menu__icon fe fe-user"></i><span
-                                class="side-menu__label">Data Kriteria</span></a>
+                        <a class="side-menu__item {{ $tittle === 'Data Criteria' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('criteria')}}">
+                            <i class="side-menu__icon fe fe-list"></i>
+                            <span class="side-menu__label">Criteria</span>
+                        </a>
                     </li>
                     <li>
-                        <a class="side-menu__item {{ $tittle === 'Data Alternative' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('alternative')}}"><i
-                                class="side-menu__icon fe fe-user"></i><span
-                                class="side-menu__label">Data Alternatif</span></a>
+                        <a class="side-menu__item {{ $tittle === 'Data Alternative' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('alternative')}}">
+                            <i class="side-menu__icon fe fe-layers"></i>
+                            <span class="side-menu__label">Alternative</span>
+                        </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a class="side-menu__item {{ $tittle === 'Data Alternative' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('alternative')}}"><i
                                 class="side-menu__icon fe fe-user"></i><span
                                 class="side-menu__label">Data Desa</span></a>
-                    </li>
+                    </li> --}}
                     <li class="sub-category">
                         <h3>AHP</h3>
                     </li>
@@ -178,7 +187,12 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="slide">
+                    <li>
+                        <a class="side-menu__item {{ $tittle === 'Perbandingan Alternatif' ? 'active' : '' }}" data-bs-toggle="slide" href="{{route('pairwiseComparisonAlternative')}}"><i
+                                class="side-menu__icon fe fe-shuffle"></i><span
+                                class="side-menu__label">Perbandingan Alternatif</span></a>
+                    </li>
+                    {{-- <li class="slide">
                         <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i
                                 class="side-menu__icon fe fe-slack"></i><span
                                 class="side-menu__label">Perbandingan Alternatif</span><i
@@ -198,7 +212,7 @@
                             </li>
                             <li><a href="{{route('rangkingCriteriaAlternativeAll')}}" class="slide-item {{ $tittle === 'Rangking Alternatif' ? 'active' : '' }}">Rangking Alternatif</a></li>
                         </ul>
-                    </li>
+                    </li> --}}
                 </ul>
             @endif
             <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"

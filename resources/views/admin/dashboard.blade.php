@@ -22,6 +22,7 @@
             <!-- ROW-1 -->
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
+                    @if (Auth::user()->role == 'superadmin')
                     <div class="row">
                         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
                             <div class="card bg-primary img-card box-primary-shadow">
@@ -44,7 +45,7 @@
                                             <h2 class="mb-0 number-font">{{$count_data_histori}}</h2>
                                             <p class="text-white mb-0">Histori Cek Rekomendasi</p>
                                         </div>
-                                        <div class="ms-auto"> <i class="fa fa-list text-white fs-30 me-2 mt-2"></i> </div>
+                                        <div class="ms-auto"> <i class="fa fa-bar-chart-2 text-white fs-30 me-2 mt-2"></i> </div>
                                     </div>
                                 </div>
                             </div>
@@ -76,6 +77,62 @@
                             </div>
                         </div>
                     </div>
+                    @elseif (Auth::user()->role == 'pakar')
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+                            <div class="card bg-primary img-card box-primary-shadow">
+                                <div class="card-body">
+                                    <div class="d-flex">
+                                        <div class="text-white">
+                                            <h2 class="mb-0 number-font">{{$count_data_criteria}}</h2>
+                                            <p class="text-white mb-0">Total Kriteria </p>
+                                        </div>
+                                        <div class="ms-auto"> <i class="fa fa-list text-white fs-30 me-2 mt-2"></i> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+                            <div class="card bg-secondary img-card box-secondary-shadow">
+                                <div class="card-body">
+                                    <div class="d-flex">
+                                        <div class="text-white">
+                                            <h2 class="mb-0 number-font">{{$count_data_histori}}</h2>
+                                            <p class="text-white mb-0">Histori Cek Rekomendasi</p>
+                                        </div>
+                                        <div class="ms-auto"> <i class="fe fe-bar-chart-2 text-white fs-30 me-2 mt-2"></i> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+                            <div class="card  bg-success img-card box-success-shadow">
+                                <div class="card-body">
+                                    <div class="d-flex">
+                                        <div class="text-white">
+                                            <h2 class="mb-0 number-font">{{$count_data_alternatif}}</h2>
+                                            <p class="text-white mb-0">Total Alternatif</p>
+                                        </div>
+                                        <div class="ms-auto"> <i class="fe fe-layersx text-white fs-30 me-2 mt-2"></i> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+                            <div class="card bg-info img-card box-info-shadow">
+                                <div class="card-body">
+                                    <div class="d-flex">
+                                        <div class="text-white">
+                                            <h2 class="mb-0 number-font">{{$count_data_village}}</h2>
+                                            <p class="text-white mb-0">Total Desa</p>
+                                        </div>
+                                        <div class="ms-auto"> <i class="fa fa-codepen text-white fs-30 me-2 mt-2"></i> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
                 </div>
             </div>
             <!-- ROW-1 END -->

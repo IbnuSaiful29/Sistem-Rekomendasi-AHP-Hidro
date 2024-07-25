@@ -16,7 +16,7 @@ class HistoriCekPenangananController extends Controller
         // dd($data_histori);
 
         $data['data_histori'] = $data_histori;
-        $data['tittle'] = 'Histori Cek Rekomendasi';
+        $data['tittle'] = 'Data Histori';
         return view('admin.laporan.histori-cek-rekomendasi', $data);
     }
 
@@ -25,7 +25,7 @@ class HistoriCekPenangananController extends Controller
         $data_histori = HistoriCekRekomendasi::with(['village', 'criteria', 'alternatif.alternatif'])->where('id', $id)->first();
 
         $data['data_histori'] = $data_histori;
-        $data['tittle'] = 'Histori Cek Rekomendasi';
+        $data['tittle'] = 'Data Histori';
         return view('admin.laporan.histori-cek-rekomendasi-detail', $data);
     }
 }

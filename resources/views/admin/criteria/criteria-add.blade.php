@@ -35,7 +35,7 @@
                                         <input type="text" class="form-control" id="inputName" name="criteria_name" placeholder="Kriteria">
                                     </div>
                                 </div>
-                                <div class=" row mb-4">
+                                {{-- <div class=" row mb-4">
                                     <label for="inputPassword3" class="col-md-3 form-label">Jenis</label>
                                     <div class="col-md-9">
                                         <div class="form-group">
@@ -46,7 +46,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="mb-0 mt-4 row justify-content-end">
                                     <div class="col-md-9">
                                         <button class="btn btn-primary" type="submit">Save</button>

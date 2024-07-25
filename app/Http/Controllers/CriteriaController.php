@@ -39,7 +39,7 @@ class CriteriaController extends Controller
 
         $saveData = [
             'nama_kriteria' => $request->criteria_name,
-            'type' => $request->type,
+            'type' => 'cost',
             'created_at' => now(),
             'updated_at' => now(),
         ];
@@ -86,7 +86,6 @@ class CriteriaController extends Controller
         // Validate the incoming request data
         $request->validate([
             'criteria_name' => 'required|string|max:255',
-            'type' => 'required|string|in:Benefit,Cost',
         ]);
 
         // Retrieve the criteria by ID
@@ -96,16 +95,22 @@ class CriteriaController extends Controller
 
         // Update the criteria's data
         $criteria->nama_kriteria = $request->criteria_name;
-        $criteria->type = $request->type;
+        // $criteria->type = $request->type;
 
         // Save the updated criteria
         $criteria->save();
 
         $id_criteria = $criteria->id;
+
         $option_name = $request->option_name;
-        $option_value = $request->option;
-        CriteriaOption::where('id_criteria', $id_criteria)->delete();
-        foreach ($option_name as $index => $item_name) {
+        $valid_option_names = array_filter($option_name, function($item) {
+            return !is_null($item) && $item !== '';
+        });
+
+        if (!empty($valid_option_names) && is_array($valid_option_names) && count($valid_option_names) > 0) {
+            $option_value = $request->option;
+            CriteriaOption::where('id_criteria', $id_criteria)->delete();
+            foreach ($valid_option_names as $index => $item_name) {
                 $save_data = [
                     'id_criteria' => $id_criteria,
                     'option' => $item_name,
@@ -115,7 +120,9 @@ class CriteriaController extends Controller
                 ];
 
                 CriteriaOption::create($save_data);
+            }
         }
+
 
         DB::commit();
 

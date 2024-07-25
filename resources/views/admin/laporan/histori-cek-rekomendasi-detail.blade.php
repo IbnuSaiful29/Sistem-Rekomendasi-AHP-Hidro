@@ -13,8 +13,8 @@
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('dashboard')}}"><i class="fe fe-home"></i></a></li>
-                        <li class="breadcrumb-item" aria-current="page"><a href="{{route('criteria')}}">Kriteria</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Tambah Kriteria</li>
+                        <li class="breadcrumb-item" aria-current="page"><a href="{{route('historiCekPenanganan')}}">histori Cek Rekomendasi</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Detail</li>
                     </ol>
                 </div>
 

@@ -37,7 +37,7 @@
                                         <input type="text" class="form-control" id="inputName" name="criteria_name" value="{{$item_criteria->nama_kriteria}}">
                                     </div>
                                 </div>
-                                <div class=" row mb-4">
+                                {{-- <div class=" row mb-4">
                                     <label for="inputPassword3" class="col-md-3 form-label">Jenis</label>
                                     <div class="col-md-9">
                                         <div class="form-group">
@@ -48,7 +48,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <br>
                                 @endforeach
                                 <div class="row mb-4">

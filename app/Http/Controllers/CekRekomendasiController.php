@@ -87,7 +87,7 @@ class CekRekomendasiController extends Controller
 
         $normalizedMatrices = $this->normalizeAllMatrices($comparisonMatrices);
 
-        // dd($normalizedMatrices);
+        // dd($weightsCriteria);
 
         // dd($comparisonMatrices);
 
@@ -96,10 +96,11 @@ class CekRekomendasiController extends Controller
 
 
         $totalWeights = $this->calculateTotalWeights($weights, $weightsCriteria);
-        //   dd($totalWeights);
+        //   dd($weights);
 
         // Normalisasi bobot total alternatif
         $normalizedTotalWeights = $this->normalizeTotalWeights($totalWeights);
+        // dd($normalizedTotalWeights);
 
         $rankedAlternativesAll = $this->rankAlternativesAll($normalizedTotalWeights);
 
@@ -146,6 +147,8 @@ class CekRekomendasiController extends Controller
                 'created_at' => now(),
                 'updated_at' => now(),
             ];
+
+            // dd($save_data_histori_alternatif);
 
             $histori_save_criteria = HistoriPenangananAlternatif::create($save_data_histori_alternatif);
 
@@ -464,7 +467,7 @@ class CekRekomendasiController extends Controller
         foreach ($alternativeWeights as $criterionId => $weights) {
 
             foreach ($weights as $index => $weight) {
-                // dd($weight);
+                // dd($weights);
                 if (!isset($totalWeights[$index])) {
                     $totalWeights[$index] = 0;
                 }
